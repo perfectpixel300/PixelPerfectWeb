@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <>
-      <div className="w-[100vw] flex items-center justify-between py-8 px-10 md:px-20 lg:px-32">
+      <div className="w-[100vw] flex items-center justify-between py-8 px-10 md:px-20 lg:px-32 fixed">
         <div>
           <Link className="">
             <p className="text-3xl font-bold">PixelPerfect.</p>

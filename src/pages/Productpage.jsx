@@ -2,7 +2,7 @@ import React from 'react'
 
 const Productpage = () => {
   return (
-    <div>Productpage</div>
+    <div className='h-screen w-screen flex items-center justify-center'>Productpage</div>
   )
 }
 
