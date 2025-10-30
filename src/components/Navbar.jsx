@@ -49,7 +49,7 @@ const Navbar = () => {
                 placeholder="Search for products | services"
                 className="outline-none"
               />
-              <IoSearch className="label-icon cursor-pointer" />
+              <IoSearch className="label-icon cursor-pointer hover:text-[#8B00C2]" />
             </label>
           </div>
           <div className=" hidden lg:flex items-center  justify-center gap-x-4 ">
