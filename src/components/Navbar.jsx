@@ -40,7 +40,7 @@ const Navbar = () => {
             ></div>
             <label
               htmlFor="search"
-              className="outline-[#c0c0c0] outline-1 px-4 py-2 text-sm flex items-center justify-between rounded-full w-full"
+              className="outline-[#c0c0c0] hover:text-[#8B00C2] outline-1 px-4 py-2 text-sm flex items-center justify-between rounded-full w-full"
             >
               <input
                 type="search"
@@ -49,7 +49,7 @@ const Navbar = () => {
                 placeholder="Search for products | services"
                 className="outline-none"
               />
-              <IoSearch className="label-icon cursor-pointer hover:text-[#8B00C2]" />
+              <IoSearch className="label-icon cursor-pointer " />
             </label>
           </div>
           <div className=" hidden lg:flex items-center  justify-center gap-x-4 ">
