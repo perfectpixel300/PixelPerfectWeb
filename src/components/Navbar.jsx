@@ -21,26 +21,26 @@ const Navbar = () => {
   return (
     <>
       <div>
-        <div className="w-[100vw] flex items-center justify-between py-[10px] px-10 md:px-14 lg:px-24 fixed bg-[#f1f1f1] ">
-          <div>
+        <div className="w-[100vw] flex items-center py-8 md:py-6 lg:py-[10px] px-10 md:px-14 lg:px-10 fixed bg-[#f1f1f1] gap-2 justify-between lg:justify-around ">
+          <div className="flex items-start">
             <Link className="flex items-center justify-center">
-              <img className="h-[70px]" src="/logo.png" alt="Pixel Perfect" />
+              <img className="h-[40px] lg:h-[70px]" src="/logo.png" alt="Pixel Perfect" />
               <div>
-                <p className="text-3xl font-bold flex">PixelPerfect.</p>
-                <p className="font-light text-[11px]">
+                <p className="text-xl lg:text-2xl font-bold flex">PixelPerfect.</p>
+                <p className="font-light text-[8px] lg:text-[9px]">
                   Stationery | Gifts | Studio | IT Support
                 </p>
               </div>
             </Link>
           </div>
-          <div className="relative hidden md:flex" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
+          <div className=" relative hidden md:flex items-center justify-center lg:justify-start" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
             <div
               ref={lineRef}
               className="absolute w-[0%] h-[2px] bg-[#8B00C2] bottom-0 left-1/2 -translate-x-[50%] rounded-full"
             ></div>
             <label
               htmlFor="search"
-              className="outline-[#c0c0c0] outline-1 px-3 py-2 text-sm flex items-center rounded-full"
+              className="outline-[#c0c0c0] outline-1 px-4 py-2 text-sm flex items-center justify-between rounded-full w-full"
             >
               <input
                 type="search"
@@ -49,20 +49,18 @@ const Navbar = () => {
                 placeholder="Search for products | services"
                 className="outline-none"
               />
-              <IoSearch className="label-icon" />
+              <IoSearch className="label-icon cursor-pointer" />
             </label>
           </div>
-          <div className="hidden lg:flex gap-4 ">
+          <div className=" hidden lg:flex items-center  justify-center gap-x-4 ">
             {navLinks.map((navLinks, index) => (
               <div className="relative " key={index}>
                 <Link to={navLinks.link}>{navLinks.id}</Link>
               </div>
             ))}
           </div>
-          <div className="flex flex-col items-center justify-center gap-1 lg:hidden">
-            <div className="bg-black w-[30px] h-[2px] rounded-full"></div>
-            <div className="bg-black w-[30px] h-[2px] rounded-full"></div>
-            <div className="bg-black w-[30px] h-[2px] rounded-full"></div>
+          <div className=" flex items-center justify-center lg:hidden cursor-pointer">
+            <i class="ri-menu-5-line text-3xl"></i>
           </div>
         </div>
       </div>

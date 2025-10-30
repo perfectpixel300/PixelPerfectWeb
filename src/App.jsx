@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import 'remixicon/fonts/remixicon.css'
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Productpage from "./pages/Productpage";
