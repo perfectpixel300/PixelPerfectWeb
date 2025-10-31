@@ -22,7 +22,7 @@ const Navbar = () => {
     <>
       <div className="">
         <div className="w-[100vw] flex items-center py-8 md:py-6 lg:py-[10px] 
-        px-10 md:px-16 fixed z-50 bg-[#f1f1f1] gap-2 justify-between ">
+        px-10 md:px-14 fixed z-50 bg-[#f1f1f1] gap-2 justify-between ">
           <div className="flex items-start">
             <Link className="flex items-center justify-center">
               <img className="h-[40px] lg:h-[70px]" src="/logo.png" alt="Pixel Perfect" />

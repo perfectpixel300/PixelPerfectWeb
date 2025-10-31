@@ -19,9 +19,9 @@ const Home = () => {
   return (
     <>
       <div className="pt-28 flex flex-col items-center">
-        <div className="relative md:h-[85vh] md:w-[90vw] overflow-hidden rounded-2xl">
-          <HeroSlider className="absolute  w-full h-full object-cover" imageCount={imageCount} />
-          <HeroSliderData className="absolute md:w-[40%] left-20 top-60" sliderData={sliderData[imageCount]} />
+        <div className="relative md:h-[85vh] md:w-[90vw] overflow-hidden px-4 pt-6 md:px-0 md:pt-0 md:rounded-2xl">
+          <HeroSlider className="md:absolute w-full md:h-full object-cover rounded-2xl" imageCount={imageCount} />
+          <HeroSliderData className="md:absolute md:w-[40%] left-20 top-60 px-4 py-5" sliderData={sliderData[imageCount]} />
         </div>
       </div>
     </>
