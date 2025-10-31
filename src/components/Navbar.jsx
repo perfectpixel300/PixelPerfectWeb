@@ -22,7 +22,7 @@ const Navbar = () => {
     <>
       <div className="">
         <div className="w-[100vw] flex items-center py-8 md:py-6 lg:py-[10px] 
-        px-10 lg:px-44 fixed z-50 bg-[#f1f1f1] gap-2 justify-between ">
+        px-10 md:px-16 fixed z-50 bg-[#f1f1f1] gap-2 justify-between ">
           <div className="flex items-start">
             <Link className="flex items-center justify-center">
               <img className="h-[40px] lg:h-[70px]" src="/logo.png" alt="Pixel Perfect" />
@@ -37,11 +37,11 @@ const Navbar = () => {
           <div className=" relative hidden md:flex items-center justify-center w-1/3" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
             <div
               ref={lineRef}
-              className="absolute w-[0%] h-[2px] bg-[#8B00C2] bottom-0 left-1/2 -translate-x-[50%] rounded-full"
+              className="absolute w-[0%] h-[2px] bg-[#129900] bottom-0 left-1/2 -translate-x-[50%] rounded-full"
             ></div>
             <label
               htmlFor="search"
-              className="outline-[#c0c0c0] hover:text-[#8B00C2] outline-1 px-4 py-2 text-sm flex items-center justify-between rounded-full w-full"
+              className="outline-[#c0c0c0] hover:text-[#129900] outline-1 px-4 py-2 text-sm flex items-center justify-between rounded-full w-full"
             >
               <input
                 type="search"

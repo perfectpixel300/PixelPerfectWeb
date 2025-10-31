@@ -1,4 +1,4 @@
-import stationery from '../assets/stationery.jpg'
+import stationery from '../assets/stationery.png'
 import gifts from '../assets/gifts.png'
 import studio from '../assets/studio.png'
 
