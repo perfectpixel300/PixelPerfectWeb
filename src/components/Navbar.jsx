@@ -20,8 +20,9 @@ const Navbar = () => {
 
   return (
     <>
-      <div>
-        <div className="w-[100vw] flex items-center py-8 md:py-6 lg:py-[10px] px-10 md:px-14 lg:px-10 fixed bg-[#f1f1f1] gap-2 justify-between lg:justify-around ">
+      <div className="">
+        <div className="w-[100vw] flex items-center py-8 md:py-6 lg:py-[10px] 
+        px-10 lg:px-44 fixed z-50 bg-[#f1f1f1] gap-2 justify-between ">
           <div className="flex items-start">
             <Link className="flex items-center justify-center">
               <img className="h-[40px] lg:h-[70px]" src="/logo.png" alt="Pixel Perfect" />
@@ -33,7 +34,7 @@ const Navbar = () => {
               </div>
             </Link>
           </div>
-          <div className=" relative hidden md:flex items-center justify-center lg:justify-start" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
+          <div className=" relative hidden md:flex items-center justify-center w-1/3" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
             <div
               ref={lineRef}
               className="absolute w-[0%] h-[2px] bg-[#8B00C2] bottom-0 left-1/2 -translate-x-[50%] rounded-full"
@@ -47,7 +48,7 @@ const Navbar = () => {
                 name="search"
                 id="search"
                 placeholder="Search for products | services"
-                className="outline-none"
+                className="outline-none w-full"
               />
               <IoSearch className="label-icon cursor-pointer " />
             </label>

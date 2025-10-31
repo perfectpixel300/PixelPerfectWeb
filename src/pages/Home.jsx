@@ -18,10 +18,10 @@ const Home = () => {
 
   return (
     <>
-      <div className="flex items-center justify-center pt-28">
-        <div className="w-[75vw] relative flex justify-center items-center object-cover overflow-hidden">
-          <HeroSlider className="object-cover" imageCount={imageCount} />
-          <HeroSliderData className="absolute z-10 top-[20%] left-10 w-[40%]" sliderData={sliderData[imageCount]} />
+      <div className="flex overflow-x-hidden h-[100vh]">
+        <div className="w-full h-[70vh] md:h-[100vh] md:w-[100vw] relative flex justify-center items-center object-cover overflow-hidden">
+          <HeroSlider className="absolute md:relative top-24 md:top-0 object-cover md:h-full w-full" imageCount={imageCount} />
+          <HeroSliderData className="absolute z-10 bottom-10 md:top-[25%] left-[8%] w-full pt-28" sliderData={sliderData[imageCount]} />
         </div>
       </div>
     </>
