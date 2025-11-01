@@ -21,6 +21,21 @@ export const navLinks = [
     },
 ]
 
+export const subNavs = [
+    {
+        id: "Stationery",
+        link: "/stationery"
+    },
+    {
+        id: "Gifts",
+        link: "/gifts"
+    },
+    {
+        id: "Photo Studio",
+        link: "/photo-studio"
+    },
+]
+
 export const sliderData = [
     {
         title: "Stationery Items",
