@@ -5,3 +5,30 @@ body {
   font-weight: 400;
   font-style: normal;
 }
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: rgb(255, 255, 255) !important;
+  background-color: rgba(122, 122, 122, 0.473);
+  padding: 10px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  box-shadow: 0px 0px 3px black;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  background: #1CAC08 !important; 
+  width: 16px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
