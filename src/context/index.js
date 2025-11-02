@@ -34,6 +34,10 @@ export const subNavs = [
         id: "Photo Studio",
         link: "/photo-studio"
     },
+    {
+        id: "Printing & Press",
+        link: "/print-press"
+    }
 ]
 
 import stationery from '../assets/stationery.png'
