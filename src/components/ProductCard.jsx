@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 const ProductCard = ({ product }) => {
   return (
     <Link to={`/product/${product.id}`} className="">
-      <div className="bg-[#e9e9e9] text-[#222222] rounded-2xl py-2">
-        <div className="px-2">
+      <div className="bg-[#e9e9e9] text-[#222222] rounded-2xl py-5 md:py-2">
+        <div className="px-2 flex items-center justify-center">
           <img
-            className="object-cover rounded-xl"
+            className="object-cover rounded-xl w-[250px] md:w-auto"
             src={product.img}
             alt={product.name}
           />

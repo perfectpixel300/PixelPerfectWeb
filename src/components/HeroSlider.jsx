@@ -9,7 +9,7 @@ import "swiper/css/pagination";
 
 const HeroSlider = () => {
   return (
-    <div className="w-full hero">
+    <div className="w-full">
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         spaceBetween={30}
@@ -18,6 +18,7 @@ const HeroSlider = () => {
         pagination={{ clickable: true }}
         autoplay={{ delay: 3000 }}
         loop={true}
+        className="hero"
       >
         {sliderData.map((data) => (
           <SwiperSlide key={data.title}>
