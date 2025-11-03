@@ -127,6 +127,7 @@ const Navbar = () => {
                 className="flex justify-between px-4 "
                 key={i}
                 to={navLinks.id}
+                onClick={handleClose}
               >
                 {navLinks.id}
                 <i class="ri-arrow-right-wide-line"></i>
@@ -137,7 +138,7 @@ const Navbar = () => {
           <div className="sub-links flex flex-col gap-5 text-2xl py-2 px-4">
             Visit
             {subNavs.map((subNav, i) => (
-              <Link className="px-2 text-xl" key={i} to={subNav.link}>
+              <Link className="px-2 text-xl" key={i} to={subNav.link} onClick={handleClose}>
                 - {subNav.id}
               </Link>
             ))}
