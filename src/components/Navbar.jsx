@@ -52,7 +52,7 @@ const Navbar = () => {
         px-6 md:px-14 fixed z-50 bg-[#f1f1f1] gap-2 justify-between "
         >
           <div className="flex items-start">
-            <Link className="flex items-center justify-center">
+            <Link to="/" className="flex items-center justify-center">
               <img
                 className="h-[40px] lg:h-[70px]"
                 src="/logo.png"

@@ -1,7 +1,7 @@
-import { sliderData } from "../context"; // or import sliderData from "../context"
+import { sliderData } from "../context";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import { Link } from "react-router-dom"; // ✅ add this if using Link
+import { Link } from "react-router-dom";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -9,7 +9,7 @@ import "swiper/css/pagination";
 
 const HeroSlider = () => {
   return (
-    <div className="w-full">
+    <div className="w-full hero">
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         spaceBetween={30}
