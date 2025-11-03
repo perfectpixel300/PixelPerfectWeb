@@ -126,7 +126,7 @@ const Navbar = () => {
               <Link
                 className="flex justify-between px-4 "
                 key={i}
-                to={navLinks.id}
+                to={navLinks.link}
                 onClick={handleClose}
               >
                 {navLinks.id}
