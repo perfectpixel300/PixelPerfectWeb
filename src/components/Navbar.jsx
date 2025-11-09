@@ -49,7 +49,7 @@ const Navbar = () => {
       <div className="">
         <div
           className="largeScreen-navbar w-[100vw] flex items-center py-4 md:py-6 lg:py-[10px] 
-        px-6 md:px-14 fixed z-50 bg-[#f1f1f1] gap-2 justify-between "
+        px-6 md:px-14 fixed z-50 bg-[#ffffff] gap-2 justify-between "
         >
           <div className="flex items-start">
             <Link to="/" className="flex items-center justify-center">

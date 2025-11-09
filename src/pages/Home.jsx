@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <>
       <div className="overflow-x-hidden">
-        <div className="pt-24 md:pt-28 px-1 flex flex-col items-center">
+        <div className="flex flex-col items-center">
           <HeroSlider />
         </div>
         <div className="w-full h-[1px] bg-[#c5c5c5] rounded-full my-10"></div>

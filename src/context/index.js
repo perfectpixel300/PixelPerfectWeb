@@ -40,6 +40,34 @@ export const subNavs = [
     }
 ]
 
+export const services = [
+    {
+        name: "Stationery",
+        description: "We offer a wide range of premium stationery products designed to make your daily work, study, and creative tasks smooth and enjoyable.",
+        icon: "ri-pencil-ruler-line",
+    },
+    {
+        name: "Printing Services",
+        description: "Get high-quality printing for documents, photos, banners, and designs with sharp details and vibrant colors every time.",
+        icon: "ri-printer-line",
+    },
+    {
+        name: "Photo Studio",
+        description: "Capture beautiful memories with our professional photo studio services that deliver stunning portraits, prints, and creative edits.",
+        icon: "ri-camera-4-line",
+    },
+    {
+        name: "It Services",
+        description: "From web design to digital solutions, we provide innovative IT services that help you grow, connect, and stand out online.",
+        icon: "ri-mac-line",
+    },
+    {
+        name: "Gifts",
+        description: "Discover an exclusive selection of thoughtful gifts crafted to add joy and meaning to every special occasion and celebration.",
+        icon: "ri-gift-2-line",
+    },
+]
+
 import stationery from '../assets/stationery.png'
 import gifts from '../assets/gifts.png'
 import studio from '../assets/studio.png'
