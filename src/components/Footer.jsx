@@ -44,12 +44,13 @@ const Footer = () => {
                             <p>Lubhu, Lalitpur</p>
                         </div>
                         <div className="flex flex-col md:flex-row gap-4 md:gap-10 text-sm pl-5">
-                            <div>
-                                <p className="text-[#999999]">Phone</p>
-                                <p>+977-9709084980</p>
+                            <div className="flex flex-col">
+                                <p className="text-[#999999] py-1">Phone</p>
+                                <Link>+977-9845991878</Link>
+                                <Link>+977-9805633013</Link>
                             </div>
                             <div>
-                                <p className="text-[#999999]">Email</p>
+                                <p className="text-[#999999] py-1">Email</p>
                                 <p>pixelperfect300@gmail.com</p>
                             </div>
                         </div>
