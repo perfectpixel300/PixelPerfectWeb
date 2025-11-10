@@ -1,8 +1,13 @@
 import React from 'react'
+import PageHeading from '../components/PageHeading'
 
 const Productpage = () => {
   return (
-    <div className='h-screen w-screen flex items-center justify-center'>Product Page</div>
+    <>
+      <div className='pt-16'>
+        <PageHeading title="Our Products" desc="Discover high-quality items crafted for everyday use." />
+      </div>
+    </> 
   )
 }
 

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
   return (
-    <Link to={`/product/${product.id}`} className="">
+    <Link to={`/product/${product.id}`}>
       <div className="bg-[#e9e9e9] text-[#222222] rounded-2xl py-5 md:py-2">
         <div className="px-2 flex items-center justify-center">
           <img
@@ -17,12 +17,11 @@ const ProductCard = ({ product }) => {
         </div>
         <div className="flex mb-1 px-5 md:px-2 w-full items-end">
           <div className="text-lg md:text-sm w-1/3 text-[#1CAC08]">Rs {product.price}</div>
-          <Link
+          <p
             className="w-2/3 flex items-center justify-center bg-[#222222] text-[#e9e9e9] rounded-full text-sm py-2"
-            to={`/product/${product.id}`}
           >
             Buy Now
-          </Link>
+          </p>
         </div>
       </div>
     </Link>

@@ -7,7 +7,7 @@ import { Autoplay, FreeMode, Navigation, Pagination } from "swiper/modules";
 const Home = () => {
   return (
     <>
-      <div className="overflow-x-hidden">
+      <div className="overflow-x-hidden pt-24 md:pt-28">
         <div className="flex flex-col items-center">
           <HeroSlider />
         </div>

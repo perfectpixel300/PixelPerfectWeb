@@ -1,8 +1,13 @@
 import React from 'react'
+import PageHeading from '../components/PageHeading'
 
 const AboutUs = () => {
   return (
-    <div className='h-screen w-screen flex items-center justify-center'>About Us</div>
+    <>
+      <div className='pt-16'>
+        <PageHeading title="About Us" desc="Learn more about who we are and what we do." />
+      </div>
+    </>
   )
 }
 
