@@ -6,7 +6,7 @@ const ProductCard = ({ product }) => {
       <div className="bg-[#e9e9e9] text-[#222222] rounded-2xl py-5 md:py-2">
         <div className="px-2 flex items-center justify-center">
           <img
-            className="object-cover rounded-xl w-[250px] md:w-auto"
+            className="object-cover rounded-xl w-[250px] h-[200px] md:w-auto"
             src={product.img}
             alt={product.name}
           />
