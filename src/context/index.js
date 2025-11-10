@@ -42,15 +42,19 @@ export const subNavs = [
 
 export const socials = [
     {
-        id: "Facebook",
-        link: "/"
+        id: "Instagram",
+        link: "https://www.instagram.com/perfect_pixel300/"
     },
     {
-        id: "Instagram",
-        link: "/"
+        id: "Facebook",
+        link: "https://www.facebook.com/people/Pixel-Perfect/61579866690028/"
     },
     {
         id: "TikTok",
+        link: "/"
+    },
+        {
+        id: "YouTube",
         link: "/"
     },
 ]
@@ -72,7 +76,7 @@ export const services = [
         icon: "ri-camera-4-line",
     },
     {
-        name: "It Services",
+        name: "IT Services",
         description: "From web design to digital solutions, we provide innovative IT services that help you grow, connect, and stand out online.",
         icon: "ri-mac-line",
     },

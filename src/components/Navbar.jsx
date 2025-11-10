@@ -9,6 +9,13 @@ const Navbar = () => {
   const burgerRef = useRef(null);
   const crossRef = useRef(null);
   const mobileNavRef = useRef(null);
+  const linkLine = useRef([]);
+
+  useEffect(() => {
+    gsap.set(linkLine.current, {
+      width: "0%",
+    })
+  }, []);
 
   const handleEnter = () => {
     gsap.to(lineRef.current, {
@@ -18,6 +25,18 @@ const Navbar = () => {
 
   const handleLeave = () => {
     gsap.to(lineRef.current, {
+      width: "0%",
+    });
+  };
+
+  const hoverEnter = (index) => {
+    gsap.to(linkLine.current[index], {
+      width: "100%",
+    });
+  };
+
+  const hoverLeave = (index) => {
+    gsap.to(linkLine.current[index], {
       width: "0%",
     });
   };
@@ -93,8 +112,9 @@ const Navbar = () => {
           </div>
           <div className=" hidden lg:flex items-center  justify-center gap-x-4 ">
             {navLinks.map((navLinks, index) => (
-              <div className="relative " key={index}>
+              <div className="relative" key={index} onMouseEnter={() => hoverEnter(index)} onMouseLeave={() => hoverLeave(index)}>
                 <Link to={navLinks.link}>{navLinks.id}</Link>
+                <div ref={(el) => (linkLine.current[index] = el)} className=" h-[3px] bg-[#129900] rounded-full"></div>
               </div>
             ))}
           </div>
