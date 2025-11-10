@@ -1,0 +1,81 @@
+import { Link } from "react-router-dom"
+import { navLinks, socials } from "../context"
+
+
+const Footer = () => {
+    return (
+        <>
+            <div className="md:h-screen w-full overflow-x-hidden flex flex-col items-center relative mt-10 md:mt-40">
+                <div className="border border-[#b4b4b4] h-[300px] md:h-[50%] w-[80%] z-10 rounded-4xl bg-gradient-to-r from-purple-500 via-[#222222] to-[#000000] flex">
+                    <div className="hidden md:flex flex-col text-[#ffffff] h-full justify-center w-1/2 px-10">
+                        <h1 className="text-2xl font-bold">Our Store Location</h1>
+                        <p className="text-sm">We’re easy to find and always ready to welcome you!</p>
+                        <p className="text-sm mt-4 py-2 cursor-default w-[100px] rounded-lg flex items-center justify-center bg-[#ffffff] text-[#222222]">Visit Us!</p>
+                    </div>
+                    <div className="md:w-1/2 p-4 md:p-5 w-full">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3534.445272180274!2d85.37673757479882!3d27.641692228385462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb11007a3e994b%3A0x95a46c02f158603d!2sPixel%20Perfect%20Studio%20and%20Stationery!5e0!3m2!1sen!2snp!4v1762785618676!5m2!1sen!2snp"
+                            width="100%"
+                            height="100%"
+                            allowFullScreen=""
+                            loading="lazy"
+                            className="border-0"
+                            referrerPolicy="no-referrer-when-downgrade"
+                            title="Store Location"
+                        ></iframe>
+                    </div>
+                </div>
+                <div className="bg-[#000000] text-[#ffffff] md:h-[70%] w-[95%] rounded-4xl md:absolute bottom-2 flex flex-col md:flex-row items-start md:items-end justify-end md:justify-between pt-12 md:pt-0 pb-12 px-5 md:px-10 ">
+                    <div className="flex flex-col gap-4 md:h-1/2">
+                        <div className="flex items-start">
+                            <Link to="/" className="flex items-center justify-center">
+                                <img
+                                    className="h-[30px] lg:h-[60px]"
+                                    src="/logo.png"
+                                    alt="Pixel Perfect"
+                                />
+                                <p className="text-2xl">PixelPerfect</p>
+                            </Link>
+                        </div>
+                        <div className="flex flex-col font-light tracking-wide text-[#999999] text-sm pl-5 cursor-default">
+                            <p>J94H+MP3</p>
+                            <p>Mahalaxmi-08</p>
+                            <p>Devisthan 44708</p>
+                            <p>Lubhu, Lalitpur</p>
+                        </div>
+                        <div className="flex flex-col md:flex-row gap-4 md:gap-10 text-sm pl-5">
+                            <div>
+                                <p className="text-[#999999]">Phone</p>
+                                <p>+977-9709084980</p>
+                            </div>
+                            <div>
+                                <p className="text-[#999999]">Email</p>
+                                <p>pixelperfect300@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="flex lg:pr-20 md:h-1/2 pt-5 md:pt-0 pl-5 md:pl-0 gap-10">
+                        <div className="flex flex-col">
+                            <p className="pb-1 text-[#999999]">Quick Links</p>
+                            {navLinks.map((navLinks, index) => (
+                                <div className="font-light text-sm" key={index}>
+                                    <Link to={navLinks.link}>{navLinks.id}</Link>
+                                </div>
+                            ))}
+                        </div>
+                        <div className="flex flex-col">
+                            <p className="pb-1 text-[#999999]">Socials</p>
+                            {socials.map((navLinks, index) => (
+                                <div className="font-light text-sm" key={index}>
+                                    <Link to={navLinks.link}>{navLinks.id}</Link>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+}
+
+export default Footer

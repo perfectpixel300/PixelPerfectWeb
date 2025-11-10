@@ -10,6 +10,7 @@ import ServicePage from "./pages/ServicePage";
 import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
 import ProductDetail from "./components/ProductDetail";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           }
         />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

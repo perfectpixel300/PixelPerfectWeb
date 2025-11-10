@@ -40,6 +40,21 @@ export const subNavs = [
     }
 ]
 
+export const socials = [
+    {
+        id: "Facebook",
+        link: "/"
+    },
+    {
+        id: "Instagram",
+        link: "/"
+    },
+    {
+        id: "TikTok",
+        link: "/"
+    },
+]
+
 export const services = [
     {
         name: "Stationery",
