@@ -2,14 +2,14 @@ import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
   return (
-    <div className="bg-[#f1f1f1] text-[#222222] mt-[72px] rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col w-full h-full">
+    <div className="bg-[#f1f1f1] text-[#222222] rounded-2xl overflow-hidden shadow-sm flex flex-col w-full ">
       {/* Image Section */}
       <Link
         to={`/product/${product.id}`}
       >
         <div className="flex items-center justify-center p-2">
           <img
-            className="object-cover rounded-xl w-full h-[180px] sm:h-[200px] md:h-[220px] lg:h-[240px]"
+            className="object-cover rounded-xl w-full h-[220px] sm:h-[200px] md:h-[220px] lg:h-[240px]"
             src={product.img}
             alt={product.name}
           />

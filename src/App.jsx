@@ -11,11 +11,13 @@ import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
 import ProductDetail from "./components/ProductDetail";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
     <BrowserRouter>
       <Navbar />
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Productpage />} />
