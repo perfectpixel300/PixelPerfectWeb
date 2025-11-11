@@ -2,29 +2,46 @@ import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
   return (
-    <Link to={`/product/${product.id}`}>
-      <div className="bg-[#e9e9e9] text-[#222222] rounded-2xl py-5 md:py-2">
-        <div className="px-2 flex items-center justify-center">
+    <div className="bg-[#f1f1f1] text-[#222222] mt-[72px] rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col w-full h-full">
+      {/* Image Section */}
+      <Link
+        to={`/product/${product.id}`}
+      >
+        <div className="flex items-center justify-center p-2">
           <img
-            className="object-cover rounded-xl w-[250px] h-[200px] md:w-auto"
+            className="object-cover rounded-xl w-full h-[180px] sm:h-[200px] md:h-[220px] lg:h-[240px]"
             src={product.img}
             alt={product.name}
           />
         </div>
-        <div className="flex flex-col my-3 px-5 md:px-2">
-          <p className="md:text-[10px] text-[#52b345]">{product.category}</p>
-          <h1 className="text-xl md:text-sm">{product.name}</h1>
+      </Link>
+
+
+      {/* Text Section */}
+      <div className="flex flex-col flex-grow justify-between px-4 pb-4">
+        <div>
+          <p className="text-[10px] sm:text-xs text-[#52b345] uppercase tracking-wide mb-1">
+            {product.category}
+          </p>
+          <h1 className="text-base sm:text-sm md:text-[15px] font-semibold truncate">
+            {product.name}
+          </h1>
         </div>
-        <div className="flex mb-1 px-5 md:px-2 w-full items-end">
-          <div className="text-lg md:text-sm w-1/3 text-[#1CAC08]">Rs {product.price}</div>
-          <p
-            className="w-2/3 flex items-center justify-center bg-[#222222] text-[#e9e9e9] rounded-full text-sm py-2"
+
+        {/* Price & Button */}
+        <div className="flex items-center justify-between mt-3">
+          <p className="text-[#1CAC08] font-semibold text-sm sm:text-base">
+            Rs {product.price}
+          </p>
+          <Link
+            to={`/product/${product.id}`}
+            className="bg-[#222222] text-[#f1f1f1] rounded-full text-[12px] sm:text-sm px-3 sm:px-4 py-1.5 hover:bg-[#1CAC08] transition-colors duration-300"
           >
             Buy Now
-          </p>
+          </Link>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 

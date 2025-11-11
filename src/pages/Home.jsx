@@ -3,6 +3,7 @@ import HeroSlider from "../components/HeroSlider";
 import ProductCard from "../components/ProductCard";
 import { products } from "../context";
 import { Autoplay, FreeMode, Navigation, Pagination } from "swiper/modules";
+import SwiperButtons from "../components/SwiperButtons";
 
 const Home = () => {
   return (
@@ -12,38 +13,39 @@ const Home = () => {
           <HeroSlider />
         </div>
         <div className="w-full h-[1px] bg-[#c5c5c5] rounded-full my-10"></div>
-        <div className="px-10 flex flex-col">
-          <div className="md:px-20">
-            <h1 className="text-2xl py-5">Just for you</h1>
+
+        {/* Items Section Begins  */}
+
+        <div className="px-4 md:px-10 flex flex-col">
+          <div className="px-10 py-4 rounded-2xl bg-[#eeeeee] ">
             <Swiper
-              freeMode={true}
-              modules={[Navigation, Pagination, FreeMode]}
-              navigation
+              className="relative w-full"
               breakpoints={{
-                0: {
-                  slidesPerView: 1,
-                  spaceBetween: 10,
+                320: {
+                  slidesPerView: 1.3,
+                  spaceBetween: 20,
                 },
                 480: {
                   slidesPerView: 2,
-                  spaceBetween: 10,
+                  spaceBetween: 20,
                 },
-                870: {
+                768: {
                   slidesPerView: 3,
-                  spaceBetween: 15,
+                  spaceBetween: 20,
                 },
-                1080: {
-                  slidesPerView: 4,
+                1024: {
+                  slidesPerView: 3,
                   spaceBetween: 20,
                 },
                 1280: {
-                  slidesPerView: 5,
+                  slidesPerView: 4,
                   spaceBetween: 30,
                 },
               }}
             >
+              <SwiperButtons title="Just for you" />
               {products.map((products) => (
-                <SwiperSlide className="w-[200px]" key={products.price}>
+                <SwiperSlide className="" key={products.price}>
                   <ProductCard product={products} />
                 </SwiperSlide>
               ))}
