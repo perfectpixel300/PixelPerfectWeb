@@ -49,8 +49,8 @@ const Footer = () => {
                         <div className="flex flex-col md:flex-row gap-4 md:gap-10 text-sm pl-5">
                             <div className="flex flex-col">
                                 <p className="text-[#999999] py-1 font-semibold">Phone</p>
-                                <Link>+977-9845991878</Link>
-                                <Link>+977-9805633013</Link>
+                                <Link to="tel:+977-9845991878" target="_blank">+977-9845991878</Link>
+                                <Link to="tel:+977-9805633013" target="_blank">+977-9805633013</Link>
                             </div>
                             <div>
                                 <p className="text-[#999999] py-1 font-semibold">Email</p>
