@@ -1,7 +1,7 @@
 import { Link, Links } from "react-router-dom";
 import { IoSearch } from "react-icons/io5";
 import gsap from "gsap";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { navLinks, subNavs } from "../context";
 
 const Navbar = () => {
@@ -10,6 +10,7 @@ const Navbar = () => {
   const crossRef = useRef(null);
   const mobileNavRef = useRef(null);
   const linkLine = useRef([]);
+  const [isOpen, setisOpen] = useState(false);
 
   useEffect(() => {
     gsap.set(linkLine.current, {
@@ -53,6 +54,7 @@ const Navbar = () => {
       duration: 0.5,
       ease: "power3.in",
     });
+    setisOpen(true);
   };
 
   const handleClose = () => {
@@ -61,7 +63,21 @@ const Navbar = () => {
       duration: 0.5,
       ease: "power3.in",
     });
+    setisOpen(false);
   };
+
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden"
+    }
+    else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen])
 
   return (
     <>
@@ -127,9 +143,11 @@ const Navbar = () => {
           </div>
         </div>
 
+
+        {/* Mobile Nav */}
         <div
           ref={mobileNavRef}
-          className="mobile-navbar bg-[#222222] text-[#ffffff] h-screen w-screen fixed z-[99999] px-6 md:hidden"
+          className="mobile-navbar bg-[#222222] text-[#ffffff] h-screen w-screen fixed z-[99999] px-6 lg:hidden"
         >
           <div className="flex justify-between items-center py-4">
             <h1 className="text-3xl">Navigation</h1>

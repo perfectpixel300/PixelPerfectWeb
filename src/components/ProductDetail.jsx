@@ -1,9 +1,11 @@
 import { useParams } from "react-router-dom";
-import { products } from "../context";
+import { mostSoldProducts, newlyAddedProducts, } from "../context";
 
 const ProductDetail = () => {
   const { id } = useParams();
-  const product = products.find((item) => item.id === id);
+
+  const allProducts = [...mostSoldProducts, ...newlyAddedProducts]
+  const product = allProducts.find((item) => item.id === id);
 
   if (!product)
     return (

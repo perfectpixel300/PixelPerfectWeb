@@ -35,7 +35,7 @@ const HeroSlider = () => {
                 </p>
                 <Link
                   to={data.link}
-                  className="text-white bg-[#1cac09] text-sm md:text-xs px-4 py-2 rounded-lg"
+                  className="text-white bg-[#1cac09] text-sm md:text-xs px-4 py-2 rounded-lg duration-300 hover:bg-[#389e2a]"
                 >
                   {data.button}
                 </Link>

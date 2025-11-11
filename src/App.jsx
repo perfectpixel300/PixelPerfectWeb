@@ -12,11 +12,13 @@ import Contact from "./pages/Contact";
 import ProductDetail from "./components/ProductDetail";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import HoverButton from "./components/HoverButton";
 
 function App() {
   return (
     <BrowserRouter>
       <Navbar />
+      <HoverButton />
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />

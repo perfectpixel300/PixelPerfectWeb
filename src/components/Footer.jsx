@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom"
 import { navLinks, socials } from "../context"
+import esewa from "../assets/esewa.png"
+import khalti from "../assets/khalti.png"
+import fonePay from "../assets/phonePay.png"
 
 
 const Footer = () => {
@@ -25,7 +28,7 @@ const Footer = () => {
                         ></iframe>
                     </div>
                 </div>
-                <div className="bg-[#000000] text-[#ffffff] md:h-[70%] w-[95%] rounded-4xl md:absolute bottom-2 flex flex-col md:flex-row items-start md:items-end justify-end md:justify-between pt-12 md:pt-0 pb-12 px-5 md:px-10 ">
+                <div className="bg-[#000000] text-[#ffffff] md:h-[70%] w-[95%] rounded-4xl md:absolute bottom-2 flex flex-col md:flex-row items-start md:items-end justify-end md:justify-between pt-12 md:pt-0 pb-12 px-5 md:px-10 md:gap-10 ">
                     <div className="flex flex-col gap-4 md:h-1/2">
                         <div className="flex items-start">
                             <Link to="/" className="flex items-center justify-center">
@@ -51,11 +54,11 @@ const Footer = () => {
                             </div>
                             <div>
                                 <p className="text-[#999999] py-1 font-semibold">Email</p>
-                                <p>pixelperfect300@gmail.com</p>
+                                <p>perfectpixel300@gmail.com</p>
                             </div>
                         </div>
                     </div>
-                    <div className="flex lg:pr-20 md:h-1/2 pt-5 md:pt-0 pl-5 md:pl-0 gap-10">
+                    <div className="flex md:h-1/2 pt-5 md:pt-0 pl-5 md:pl-0 gap-10">
                         <div className="flex flex-col">
                             <p className="pb-1 text-[#999999] font-semibold">Quick Links</p>
                             {navLinks.map((navLinks, index) => (
@@ -71,6 +74,34 @@ const Footer = () => {
                                     <Link to={navLinks.link} target="_blank">{navLinks.id}</Link>
                                 </div>
                             ))}
+                        </div>
+                        <div className="hidden [@media(min-width:1000px)]:flex items-center gap-3 font-semibold flex-col">
+                            <p className="cursor-default">We Accept</p>
+                            <div className="flex flex-col gap-2">
+                                <div className="bg-white rounded-lg h-[40px] w-[150px] flex items-center justify-center" >
+                                    <img className="object-cover h-[30px]" src={esewa} alt="esewa.img" />
+                                </div>
+                                <div className="bg-white rounded-lg h-[40px] w-[150px] flex items-center justify-center" >
+                                    <img className="object-cover h-[30px]" src={fonePay} alt="fonepay.img" />
+                                </div>
+                                <div className="bg-white rounded-lg h-[40px] w-[150px] flex items-center justify-center" >
+                                    <img className="object-cover h-[30px]" src={khalti} alt="khalti.img" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="flex md:hidden items-center gap-3 font-semibold flex-col pt-10 w-full">
+                        <p className="cursor-default">We Accept</p>
+                        <div className="flex gap-2">
+                            <div className="bg-white rounded-lg h-[40px] w-[80px] flex items-center justify-center" >
+                                <img className="object-cover h-[20px]" src={esewa} alt="esewa.img" />
+                            </div>
+                            <div className="bg-white rounded-lg h-[40px] w-[80px] flex items-center justify-center" >
+                                <img className="object-cover h-[20px]" src={fonePay} alt="fonepay.img" />
+                            </div>
+                            <div className="bg-white rounded-lg h-[40px] w-[80px] flex items-center justify-center" >
+                                <img className="object-cover h-[20px]" src={khalti} alt="khalti.img" />
+                            </div>
                         </div>
                     </div>
                 </div>
