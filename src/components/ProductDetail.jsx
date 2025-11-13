@@ -34,7 +34,7 @@ const ProductDetail = () => {
         </div>
         <div className="pt-4 md:pt-16">
           <p className="text-[#666666]">Stock</p>
-          <p className="text-[#1cac08] underline font-light tracking-wide">{product.avaibility}</p>
+          <p className="text-[#1cac08] underline font-light tracking-wide">{product.stock}</p>
         </div>
         <button className="bg-[#222222] text-[#f2f2f2] flex items-center justify-center w-[150px] py-1 rounded-full">
           Buy Now

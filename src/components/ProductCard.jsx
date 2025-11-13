@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
   return (
-    <div className="bg-[#f1f1f1] text-[#222222] rounded-2xl overflow-hidden shadow-sm flex flex-col w-full 2xl:h-[460px]">
+    <div className="bg-[#f1f1f1] text-[#222222] rounded-2xl overflow-hidden shadow-xl flex flex-col w-[250px] 2xl:h-[460px]">
       {/* Image Section */}
       <Link
         to={`/product/${product.id}`}
@@ -12,7 +12,7 @@ const ProductCard = ({ product }) => {
             className="object-cover rounded-xl w-full h-[220px] sm:h-[200px] md:h-[220px] lg:h-[240px] 2xl:h-[350px]"
             src={product.img}
             alt={product.name}
-          /> 
+          />
         </div>
       </Link>
 
@@ -30,9 +30,12 @@ const ProductCard = ({ product }) => {
 
         {/* Price & Button */}
         <div className="flex items-center justify-between mt-3">
-          <p className="text-[#1CAC08] font-semibold text-sm sm:text-base">
-            Rs {product.price}
-          </p>
+          <div>
+            <p className="text-[#1CAC08] font-semibold text-sm sm:text-base">
+              Rs {product.price}
+            </p>
+            <p className="text-xs font-light cursor-default">{product.stock}</p>
+          </div>
           <Link
             to={`/product/${product.id}`}
             className="bg-[#222222] text-[#f1f1f1] rounded-full text-[12px] sm:text-sm px-3 sm:px-4 py-1.5 hover:bg-[#1CAC08] transition-colors duration-300"
