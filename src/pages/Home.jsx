@@ -19,7 +19,7 @@ const Home = () => {
         <div className="px-4 md:px-10 flex flex-col">
           <div className="px-5 md:px-10 rounded-2xl bg-[#e7e7e7] ">
             <Swiper
-              className="relative w-full h-[380px] md:h-[500px] 2xl:h-[570px]"
+              className="relative w-full h-[380px] md:h-[500px] 2xl:h-[600px]"
               modules={[Autoplay]}
               autoplay={{ delay: 4000 }}
               loop={true}
@@ -45,7 +45,7 @@ const Home = () => {
                   spaceBetween: 25,
                 },
                 1536: {
-                  slidesPerView: 5,
+                  slidesPerView: 4.1,
                   spaceBetween: 30,
                 }
               }}
@@ -63,7 +63,7 @@ const Home = () => {
         <div className="px-4 md:px-10 flex flex-col mt-10 md:mt-16">
           <div className="px-5 md:px-10 rounded-2xl bg-[#e7e7e7] ">
             <Swiper
-              className="relative w-full h-[380px] md:h-[500px] 2xl:h-[570px]"
+              className="relative w-full h-[380px] md:h-[500px] 2xl:h-[600px]"
               modules={[Autoplay]}
               autoplay={{ delay: 4000 }}
               loop={true}
@@ -89,7 +89,7 @@ const Home = () => {
                   spaceBetween: 25,
                 },
                 1536: {
-                  slidesPerView: 5,
+                  slidesPerView: 4.1,
                   spaceBetween: 30,
                 }
               }}
@@ -103,6 +103,7 @@ const Home = () => {
             </Swiper>
           </div>
         </div>
+
       </div>
     </>
   );

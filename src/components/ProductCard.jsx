@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
   return (
-    <div className="bg-[#f1f1f1] text-[#222222] rounded-2xl overflow-hidden shadow-xs flex flex-col w-[150px] h-[220px] md:h-auto md:w-auto 2xl:h-[470px]">
+    <div className="bg-[#f1f1f1] text-[#222222] rounded-2xl overflow-hidden shadow-xs flex flex-col w-[150px] h-[220px] md:h-auto md:w-[250px] 2xl:w-[350px] 2xl:h-[470px]">
       {/* Image Section */}
       <Link
         to={`/product/${product.id}`}
@@ -20,7 +20,7 @@ const ProductCard = ({ product }) => {
       {/* Text Section */}
       <div className="flex flex-col flex-grow justify-between px-4 pb-4">
         <div className="flex flex-col">
-          <p className="text-[10px] sm:text-xs text-[#52b345] uppercase tracking-wide md:mb-1">
+          <p className="text-[10px] sm:text-xs 2xl:text-base text-[#52b345] uppercase tracking-wide md:mb-1">
             {product.category}
           </p>
           <h1 className="text-[11px] sm:text-sm md:text-[15px] font-semibold truncate">
