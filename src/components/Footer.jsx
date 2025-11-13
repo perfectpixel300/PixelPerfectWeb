@@ -58,7 +58,7 @@ const Footer = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="flex md:h-1/2 pt-5 md:pt-0 pl-5 md:pl-0 gap-10">
+                    <div className="flex md:h-1/2 pt-5 md:pt-0 pl-5 md:pl-0 gap-5">
                         <div className="flex flex-col">
                             <p className="pb-1 text-[#999999] font-semibold">Quick Links</p>
                             {navLinks.map((navLinks, index) => (

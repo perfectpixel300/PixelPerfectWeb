@@ -25,7 +25,7 @@ const Home = () => {
               loop={true}
               breakpoints={{
                 320: {
-                  slidesPerView: 2,
+                  slidesPerView: 1.8,
                   spaceBetween: 5,
                 },
                 480: {
@@ -69,7 +69,7 @@ const Home = () => {
               loop={true}
               breakpoints={{
                 320: {
-                  slidesPerView: 2,
+                  slidesPerView: 1.8,
                   spaceBetween: 5,
                 },
                 480: {

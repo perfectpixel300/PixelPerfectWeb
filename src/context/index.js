@@ -23,28 +23,12 @@ export const navLinks = [
 
 export const subNavs = [
     {
-        id: "Stationery",
-        link: "/stationery"
-    },
-    {
-        id: "Gifts",
-        link: "/gifts"
-    },
-    {
         id: "Photo Studio",
         link: "/photo-studio"
     },
     {
         id: "Printing & Press",
         link: "/print-press"
-    },
-        {
-        id: "Trending",
-        link: "/trending-products"
-    },
-        {
-        id: "Newly added",
-        link: "/newly-added"
     },
 ]
 

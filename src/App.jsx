@@ -13,6 +13,8 @@ import ProductDetail from "./components/ProductDetail";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import HoverButton from "./components/HoverButton";
+import Studio from "./pages/Studio";
+import PrintingPress from "./pages/PrintingPress";
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
         <Route path="/services" element={<ServicePage />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/photo-studio" element={<Studio />} />
+        <Route path="/print-press" element={<PrintingPress />} />
         <Route path="/admin" element={<AdminLogin />} />
         <Route
           path="/admin/dashboard"

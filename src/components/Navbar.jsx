@@ -147,7 +147,7 @@ const Navbar = () => {
         {/* Mobile Nav */}
         <div
           ref={mobileNavRef}
-          className="mobile-navbar bg-[#222222] text-[#ffffff] h-screen w-screen fixed z-[99999] px-6 lg:hidden"
+          className="mobile-navbar bg-[#222222] text-[#ffffff] h-screen w-screen fixed z-[99999] px-6 lg:hidden overflow-auto"
         >
           <div className="flex justify-between items-center py-4">
             <h1 className="text-3xl">Navigation</h1>
