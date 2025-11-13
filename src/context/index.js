@@ -110,21 +110,21 @@ export const sliderData = [
         desc: "Discover a curated collection of quality stationery designed to inspire creativity, enhance productivity, and bring style to your workspace.",
         button: "Discover more",
         img: stationery,
-        link: ""
+        link: "/products"
     },
     {
         title: "Gift Items",
         desc: "Explore beautifully crafted gifts made to express love, celebrate special moments, and create lasting memories for every occasion.",
         button: "Get yours",
         img: gifts,
-        link: ""
+        link: "/products"
     },
     {
         title: "Photo Studio",
         desc: "Experience professional photography that captures genuine emotions, timeless portraits, and the beauty of every unforgettable moment.",
         button: "Reserve now",
         img: studio,
-        link: ""
+        link: "/products"
     }
 ]
 

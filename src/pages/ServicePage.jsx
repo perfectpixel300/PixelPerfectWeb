@@ -7,7 +7,7 @@ const ServicePage = () => {
     <>
       <div className="pt-16">
         <div className="">
-          <PageHeading title="Our Services" desc="Get professional solutions tailored to your needs." />
+          <PageHeading title="Our Services" nav="Home" link="/" desc="Get professional solutions tailored to your needs." />
           <div className="px-10">
             <p className="pt-20 md:pl-20 text-3xl">What we offer</p>
             <div className="flex flex-col md:flex-row flex-wrap py-5 gap-2 md:gap-5 items-center justify-center">

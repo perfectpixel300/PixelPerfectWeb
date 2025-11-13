@@ -13,7 +13,7 @@ const Productpage = () => {
   return (
     <>
       <div className='pt-16'>
-        <PageHeading title="Our Products" desc="Discover high-quality items crafted for everyday use." />
+        <PageHeading title="Our Products" nav="Home" link="/" desc="Discover high-quality items crafted for everyday use." />
       </div>
 
       {/* Category Filter */}
@@ -26,7 +26,7 @@ const Productpage = () => {
               <button
                 key={cat.name}
                 onClick={() => setActiveCategory(cat.name)}
-                className={`border-[1px] border-[#bbbbbb] duration-300 px-6 py-2 flex items-center justify-center gap-2 rounded-md
+                className={`border-[1px] border-[#bbbbbb] cursor-pointer duration-300 px-6 py-2 flex items-center justify-center gap-2 rounded-md
                 ${activeCategory === cat.name ? 'bg-[#52b345] text-white' : 'hover:bg-[#52b345] hover:text-white'}
                 `}
               >
@@ -37,7 +37,7 @@ const Productpage = () => {
         </div>
 
         {/* Products Grid */}
-        <div className='flex flex-wrap items-center justify-center gap-6 mt-6'>
+        <div className='flex flex-wrap items-center justify-center gap-4 md:gap-6 mt-6'>
           {filteredProducts.length > 0 ? (
             filteredProducts.map((product, index) => (
                   <ProductCard key={index} product={product}/>

@@ -5,7 +5,7 @@ const AboutUs = () => {
   return (
     <>
       <div className='pt-16'>
-        <PageHeading title="About Us" desc="Learn more about who we are and what we do." />
+        <PageHeading title="About Us" nav="Home" link="/" desc="Learn more about who we are and what we do." />
       </div>
     </>
   )

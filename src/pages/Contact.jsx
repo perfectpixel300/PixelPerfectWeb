@@ -5,7 +5,7 @@ const Contact = () => {
   return (
     <>
       <div className='pt-16'>
-        <PageHeading title="Contact" desc="Connect with us for custom gifts, prints, or tech support." />
+        <PageHeading title="Contact" nav="Home" link="/" desc="Connect with us for custom gifts, prints, or tech support." />
       </div>
     </>
   )
