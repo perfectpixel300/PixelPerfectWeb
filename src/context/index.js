@@ -73,6 +73,11 @@ export const services = [
         icon: "ri-mac-line",
     },
     {
+        name: "Advertising",
+        description: "A complete branding and promotion service that elevates your business through smart advertising and impactful social media growth.",
+        icon: "ri-article-line",
+    },
+    {
         name: "Gifts",
         description: "Discover an exclusive selection of thoughtful gifts crafted to add joy and meaning to every special occasion and celebration.",
         icon: "ri-gift-2-line",
@@ -81,6 +86,11 @@ export const services = [
         name: "Electronics Repair",
         description: "Experience expert mobile and electronic repairs that restore your devices to perfect working condition with precision, care, and reliability.",
         icon: "ri-cpu-line",
+    },
+    {
+        name: "Blue-Book Renewal",
+        description: "Renew your vehicle's bluebook easily with our fast and reliable service. We handle all procedures so you can stay relaxed",
+        icon: "ri-passport-line",
     },
 ]
 

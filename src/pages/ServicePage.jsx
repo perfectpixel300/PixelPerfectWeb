@@ -5,7 +5,7 @@ import { services } from "../context"
 const ServicePage = () => {
   return (
     <>
-      <div className="pt-16">
+      <div className="pt-16 md:pt-12">
         <div className="">
           <PageHeading title="Our Services" nav="Home" link="/" desc="Get professional solutions tailored to your needs." />
           <div className="px-10">

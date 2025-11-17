@@ -12,7 +12,7 @@ const Productpage = () => {
 
   return (
     <>
-      <div className='pt-16'>
+      <div className='pt-16 md:pt-12'>
         <PageHeading title="Our Products" nav="Home" link="/" desc="Discover high-quality items crafted for everyday use." />
       </div>
 

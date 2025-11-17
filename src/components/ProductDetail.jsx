@@ -98,7 +98,7 @@ const ProductDetail = () => {
             <p className="text-[#666666]">Stock :</p>
             <p className="text-[#1cac08] underline font-light tracking-wide">{product.stock}</p>
           </div>
-          <button onClick={popUpOpen} className="bg-[#222222] text-[#f2f2f2] flex items-center justify-center w-[150px] py-1 rounded-full">
+          <button onClick={popUpOpen} className="bg-[#222222] text-[#f2f2f2] flex items-center justify-center w-[150px] py-1 rounded-full cursor-pointer">
             Place Order
           </button>
           <div className="w-full h-[1px] bg-[#c5c5c5] rounded-full my-2"></div>
