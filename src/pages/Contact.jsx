@@ -6,6 +6,22 @@ const Contact = () => {
     <>
       <div className='pt-16 md:pt-12'>
         <PageHeading title="Contact" nav="Home" link="/" desc="Connect with us for custom gifts, prints, or tech support." />
+        <div className='px-4 md:px-10 py-10'>
+          <div className='flex w-full flex-col items-center justify-center'>
+            <p className='text-sm md:text-xl text-center '>Contact us for any questions. We're here to help you find exactly what you need.</p>
+            <div className='flex p-10 w-full md:w-1/2'>
+              <form className='flex w-full  flex-col gap-4' action="https://formsubmit.co/perfectpixel300@gmail.com" method="POST">
+                <input className='bg-[#DCD8CE] rounded-lg px-5 py-4' type="text" name="name" id="name" placeholder='Full name*' />
+                <div className='flex flex-col md:flex-row gap-4 w-full'>
+                  <input className='bg-[#DCD8CE] rounded-lg px-5 py-4 md:w-1/2' type="email" name="email" id="email" placeholder='Email' />
+                  <input className='bg-[#DCD8CE] rounded-lg px-5 py-4 md:w-1/2' type="tel" name="phone" id="phone" placeholder='Phone*' />
+                </div>
+                <textarea className='bg-[#DCD8CE] rounded-lg px-5 py-4 resize-none h-[200px]' placeholder='Your message*' name="message" id="message" />
+                <button className="bg-[#52b345] text-[#ffffff] text-lg md:text-xl p-5 flex items-center justify-center rounded-3xl mt-6 cursor-pointer font-semibold">Send Form</button>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   )
