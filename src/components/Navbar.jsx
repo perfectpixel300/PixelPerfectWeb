@@ -139,7 +139,7 @@ const Navbar = () => {
             onClick={handleOpen}
             className=" flex items-center justify-center lg:hidden cursor-pointer"
           >
-            <i class="ri-menu-line text-3xl"></i>
+            <i className="ri-menu-line text-3xl"></i>
           </div>
         </div>
 
@@ -156,7 +156,7 @@ const Navbar = () => {
               ref={crossRef}
               onClick={handleClose}
             >
-              <i class="ri-close-large-line text-2xl"></i>
+              <i className="ri-close-large-line text-2xl"></i>
             </div>
           </div>
           <div className="links flex flex-col gap-6 text-2xl pt-10">
@@ -168,7 +168,7 @@ const Navbar = () => {
                 onClick={handleClose}
               >
                 {navLinks.id}
-                <i class="ri-arrow-right-wide-line"></i>
+                <i className="ri-arrow-right-wide-line"></i>
               </Link>
             ))}
           </div>

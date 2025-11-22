@@ -3,7 +3,7 @@ import 'remixicon/fonts/remixicon.css'
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Productpage from "./pages/Productpage";
-import AdminLogin from "./Admin/AdminLogin";
+import AdminLogin from "./Admin/Admin";
 import Admin from "./pages/Admin";
 import PrivateRoute from "./Admin/PrivateRoute";
 import ServicePage from "./pages/ServicePage";
@@ -15,33 +15,22 @@ import ScrollToTop from "./components/ScrollToTop";
 import HoverButton from "./components/HoverButton";
 import Studio from "./pages/Studio";
 import PrintingPress from "./pages/PrintingPress";
+import NormalLayout from "./pages/NormalLayout";
 
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
-      <HoverButton />
-      <ScrollToTop />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/products" element={<Productpage />} />
-        <Route path="/product/:id" element={<ProductDetail />} />
-        <Route path="/services" element={<ServicePage />} />
-        <Route path="/about-us" element={<AboutUs />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/photo-studio" element={<Studio />} />
-        <Route path="/print-press" element={<PrintingPress />} />
-        <Route path="/admin" element={<AdminLogin />} />
-        <Route
-          path="/admin/dashboard"
-          element={
-            <PrivateRoute>
-              <Admin />
-            </PrivateRoute>
-          }
-        />
+        <Route path="/" element={<NormalLayout><Home /></NormalLayout>} />
+        <Route path="/products" element={<NormalLayout><Productpage /></NormalLayout>} />
+        <Route path="/product/:id" element={<NormalLayout><ProductDetail /></NormalLayout>} />
+        <Route path="/services" element={<NormalLayout><ServicePage /></NormalLayout>} />
+        <Route path="/about-us" element={<NormalLayout><AboutUs /></NormalLayout>} />
+        <Route path="/contact" element={<NormalLayout><Contact /></NormalLayout>} />
+        <Route path="/photo-studio" element={<NormalLayout><Studio /></NormalLayout>} />
+        <Route path="/print-press" element={<NormalLayout><PrintingPress /></NormalLayout>} />
+        <Route path="/admin/*" element={<AdminLogin />} />
       </Routes>
-      <Footer />
     </BrowserRouter>
   );
 }
