@@ -16,6 +16,7 @@ const ProtectedAdmin = ({ children }) => {
                     setIsAdmin(true)
                 }
                 else {
+
                     navigate("/admin/login")
                 }
             }
@@ -30,7 +31,7 @@ const ProtectedAdmin = ({ children }) => {
     }
     useEffect(() => {
         Request()
-    }, [])
+    })
     return (
         <>
             {(isAdmin) ? children : ""}

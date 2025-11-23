@@ -10,7 +10,7 @@ const ProductCard = ({ product }) => {
         <div className="flex items-center justify-center p-2">
           <img
             className="object-cover rounded-xl w-full h-[120px]  md:h-[220px] lg:h-[240px] 2xl:h-[350px]"
-            src={product.img}
+            src={product?.image?.url}
             alt={product.name}
           />
         </div>
@@ -21,7 +21,7 @@ const ProductCard = ({ product }) => {
       <div className="flex flex-col flex-grow justify-between px-4 pb-4">
         <div className="flex flex-col">
           <p className="text-[10px] sm:text-xs 2xl:text-base text-[#52b345] uppercase tracking-wide md:mb-1">
-            {product.category}
+            {product.category.name}
           </p>
           <h1 className="text-[11px] sm:text-sm md:text-[15px] font-semibold truncate">
             {product.name}
@@ -37,7 +37,7 @@ const ProductCard = ({ product }) => {
             <p className="text-[7px] md:text-xs font-light cursor-default">{product.stock}</p>
           </div>
           <Link
-            to={`/product/${product.id}`}
+            to={`/product/${product._id}`}
             className="bg-[#222222] text-[#f1f1f1] rounded-full text-[10px] md:text-sm px-3 sm:px-4 py-1.5 hover:bg-[#1CAC08] transition-colors duration-300"
           >
             Details
