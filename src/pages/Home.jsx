@@ -1,11 +1,28 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import HeroSlider from "../components/HeroSlider";
 import ProductCard from "../components/ProductCard";
-import { mostSoldProducts, newlyAddedProducts } from "../context";
+import { newlyAddedProducts } from "../context";
 import { Autoplay, FreeMode, Navigation, Pagination } from "swiper/modules";
 import SwiperButtons from "../components/SwiperButtons";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Home = () => {
+
+  const [mostSoldProducts, setMostSoldProducts] = useState([])
+
+
+
+  useEffect(() => {
+    axios.get(`${import.meta.env.VITE_API_URL}/products?page=1&limit=6&populate=true`).then((res) => {
+      setMostSoldProducts(res.data.products);
+      console.log(res.data.products);
+      
+    }).catch(err => {
+      console.log(err);
+    })
+  },[])
+
   return (
     <>
       <div className="overflow-x-hidden pt-24 md:pt-28">
@@ -51,7 +68,7 @@ const Home = () => {
               }}
             >
               <SwiperButtons title="Trending Products" />
-              {mostSoldProducts.map((products) => (
+              {mostSoldProducts?.map((products) => (
                 <SwiperSlide className="mt-[140px] xl:mt-[90px]" key={products.price}>
                   <ProductCard product={products} />
                 </SwiperSlide>
