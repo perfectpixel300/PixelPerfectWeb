@@ -54,7 +54,7 @@ const Home = () => {
         <div className="px-4 md:px-10 flex flex-col">
           <div className="px-5 md:px-10 rounded-2xl bg-[#e7e7e7] ">
             <Swiper
-              className="relative w-full h-[380px] md:h-[500px] 2xl:h-[600px]"
+              className="relative w-full h-[380px] md:h-[470px] lg:h-[500px] 2xl:h-[600px]"
               modules={[Autoplay]}
               autoplay={{ delay: 4000 }}
               loop={true}
@@ -67,8 +67,12 @@ const Home = () => {
                   slidesPerView: 2.7,
                   spaceBetween: 5,
                 },
-                768: {
+                620: {
                   slidesPerView: 3,
+                  spaceBetween: 5,
+                },
+                768: {
+                  slidesPerView: 2.3,
                   spaceBetween: 5,
                 },
                 1024: {
@@ -80,14 +84,14 @@ const Home = () => {
                   spaceBetween: 5,
                 },
                 1536: {
-                  slidesPerView: 4.2,
+                  slidesPerView: 4,
                   spaceBetween: 10,
                 }
               }}
             >
               <SwiperButtons title="Trending Products" />
               {mostSoldProducts?.map((products) => (
-                <SwiperSlide className="mt-[140px] xl:mt-[90px]" key={products.price}>
+                <SwiperSlide className="mt-[140px] md:mt-[90px] xl:mt-[90px]" key={products.price}>
                   <ProductCard product={products} />
                 </SwiperSlide>
               ))}
@@ -98,7 +102,7 @@ const Home = () => {
         <div className="px-4 md:px-10 flex flex-col mt-10 md:mt-16">
           <div className="px-5 md:px-10 rounded-2xl bg-[#e7e7e7] ">
             <Swiper
-              className="relative w-full h-[380px] md:h-[500px] 2xl:h-[600px]"
+              className="relative w-full h-[380px] md:h-[470px] lg:h-[500px] 2xl:h-[600px]"
               modules={[Autoplay]}
               autoplay={{ delay: 4000 }}
               loop={true}
@@ -111,8 +115,12 @@ const Home = () => {
                   slidesPerView: 2.7,
                   spaceBetween: 5,
                 },
-                768: {
+                620: {
                   slidesPerView: 3,
+                  spaceBetween: 5,
+                },
+                768: {
+                  slidesPerView: 2.3,
                   spaceBetween: 5,
                 },
                 1024: {
@@ -124,14 +132,14 @@ const Home = () => {
                   spaceBetween: 5,
                 },
                 1536: {
-                  slidesPerView: 4.2,
+                  slidesPerView: 4,
                   spaceBetween: 10,
                 }
               }}
             >
               <SwiperButtons title="Newly Added Products" />
               {newlyAddedProducts.map((products) => (
-                <SwiperSlide className="mt-[140px] xl:mt-[90px]" key={products.price}>
+                <SwiperSlide className="mt-[140px] md:mt-[90px] xl:mt-[90px]" key={products.price}>
                   <ProductCard product={products} />
                 </SwiperSlide>
               ))}
