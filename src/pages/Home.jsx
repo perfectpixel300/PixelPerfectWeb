@@ -48,7 +48,7 @@ const Home = () => {
         </div>
         <div className="w-full h-[1px] bg-[#c5c5c5] rounded-full my-10"></div>
 
-        {/* Items Section Begins  */}
+        {/* Items Section Begins now */}
 
         <div className="px-4 md:px-10 flex flex-col">
           <div className="px-5 md:px-10 rounded-2xl bg-[#e7e7e7] ">
@@ -68,19 +68,19 @@ const Home = () => {
                 },
                 768: {
                   slidesPerView: 3,
-                  spaceBetween: 10,
+                  spaceBetween: 5,
                 },
                 1024: {
                   slidesPerView: 3,
-                  spaceBetween: 20,
+                  spaceBetween: 5,
                 },
                 1280: {
-                  slidesPerView: 4,
-                  spaceBetween: 25,
+                  slidesPerView: 4.1,
+                  spaceBetween: 5,
                 },
                 1536: {
-                  slidesPerView: 4.1,
-                  spaceBetween: 30,
+                  slidesPerView: 4.2,
+                  spaceBetween: 10,
                 }
               }}
             >
@@ -112,19 +112,19 @@ const Home = () => {
                 },
                 768: {
                   slidesPerView: 3,
-                  spaceBetween: 10,
+                  spaceBetween: 5,
                 },
                 1024: {
                   slidesPerView: 3,
-                  spaceBetween: 20,
+                  spaceBetween: 5,
                 },
                 1280: {
-                  slidesPerView: 4,
-                  spaceBetween: 25,
+                  slidesPerView: 4.1,
+                  spaceBetween: 5,
                 },
                 1536: {
-                  slidesPerView: 4.1,
-                  spaceBetween: 30,
+                  slidesPerView: 4.2,
+                  spaceBetween: 10,
                 }
               }}
             >
