@@ -34,19 +34,19 @@ const Home = () => {
                 },
                 768: {
                   slidesPerView: 3,
-                  spaceBetween: 10,
+                  spaceBetween: 5,
                 },
                 1024: {
                   slidesPerView: 3,
-                  spaceBetween: 20,
+                  spaceBetween: 5,
                 },
                 1280: {
-                  slidesPerView: 4,
-                  spaceBetween: 25,
+                  slidesPerView: 4.1,
+                  spaceBetween: 5,
                 },
                 1536: {
-                  slidesPerView: 4.1,
-                  spaceBetween: 30,
+                  slidesPerView: 4.2,
+                  spaceBetween: 10,
                 }
               }}
             >
@@ -78,19 +78,19 @@ const Home = () => {
                 },
                 768: {
                   slidesPerView: 3,
-                  spaceBetween: 10,
+                  spaceBetween: 5,
                 },
                 1024: {
                   slidesPerView: 3,
-                  spaceBetween: 20,
+                  spaceBetween: 5,
                 },
                 1280: {
-                  slidesPerView: 4,
-                  spaceBetween: 25,
+                  slidesPerView: 4.1,
+                  spaceBetween: 5,
                 },
                 1536: {
-                  slidesPerView: 4.1,
-                  spaceBetween: 30,
+                  slidesPerView: 4.2,
+                  spaceBetween: 10,
                 }
               }}
             >
