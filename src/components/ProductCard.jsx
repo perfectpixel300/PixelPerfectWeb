@@ -5,7 +5,7 @@ const ProductCard = ({ product }) => {
     <div className="bg-[#f1f1f1] text-[#222222] rounded-2xl overflow-hidden shadow-xs flex flex-col w-[150px] h-[220px] md:h-auto md:w-[250px] 2xl:w-[350px] 2xl:h-[470px]">
       {/* Image Section */}
       <Link
-        to={`/product/${product.id}`}
+        to={`/product/${product._id}`}
       >
         <div className="flex items-center justify-center p-2">
           <img
