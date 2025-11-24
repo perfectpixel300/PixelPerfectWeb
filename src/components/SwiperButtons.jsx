@@ -13,10 +13,10 @@ const SwiperButtons = ({ title }) => {
             <div className="flex flex-col md:flex-row gap-4 items-center justify-center">
                 <div className='flex gap-2'>
                     <button className="flex cursor-pointer bg-[#f1f1f1] shadow-xs duration-300 hover:bg-[#52b345] hover:text-[#ffffff] w-8 h-8 md:w-10 md:h-10 text-lg md:text-xl rounded-full items-center justify-center" onClick={() => swiper.slidePrev()}>
-                        <i class="ri-arrow-left-long-line"></i>
+                        <i className="ri-arrow-left-long-line"></i>
                     </button>
                     <button className="flex cursor-pointer bg-[#f1f1f1] shadow-xs duration-300 hover:bg-[#52b345] hover:text-[#ffffff] w-8 h-8 md:w-10 md:h-10 text-lg md:text-xl rounded-full items-center justify-center" onClick={() => swiper.slideNext()}>
-                        <i class="ri-arrow-right-long-line"></i>
+                        <i className="ri-arrow-right-long-line"></i>
                     </button>
                 </div>
                 <div className="">
