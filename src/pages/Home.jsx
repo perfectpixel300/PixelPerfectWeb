@@ -1,7 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import HeroSlider from "../components/HeroSlider";
 import ProductCard from "../components/ProductCard";
-import { newlyAddedProducts } from "../context";
 import { Autoplay, FreeMode, Navigation, Pagination } from "swiper/modules";
 import SwiperButtons from "../components/SwiperButtons";
 import { useEffect, useState } from "react";
@@ -10,18 +9,36 @@ import axios from "axios";
 const Home = () => {
 
   const [mostSoldProducts, setMostSoldProducts] = useState([])
-
+  const [newlyAddedProducts, setNewlyAddedProducts] = useState([])
 
 
   useEffect(() => {
-    axios.get(`${import.meta.env.VITE_API_URL}/products?page=1&limit=6&populate=true`).then((res) => {
-      setMostSoldProducts(res.data.products);
-      console.log(res.data.products);
-      
-    }).catch(err => {
-      console.log(err);
-    })
-  },[])
+    const source = axios.CancelToken.source();
+    const base = import.meta.env.VITE_API_URL;
+
+    const mostSoldReq = axios.get(`${base}/products?page=1&limit=6&populate=true`, {
+      cancelToken: source.token,
+    });
+    const recentReq = axios.get(`${base}/products/recent?populate=true`, {
+      cancelToken: source.token,
+    });
+
+    Promise.all([mostSoldReq, recentReq])
+      .then(([mostRes, recentRes]) => {
+        setMostSoldProducts(mostRes.data?.products || []);
+        setNewlyAddedProducts(recentRes.data?.products || []);
+        console.log("mostSold:", mostRes.data?.products);
+        console.log("recent:", recentRes.data?.products);
+      })
+      .catch((err) => {
+        if (axios.isCancel(err)) return;
+        console.error(err);
+      });
+
+    return () => {
+      source.cancel("Component unmounted, requests cancelled");
+    };
+  }, []);
 
   return (
     <>
