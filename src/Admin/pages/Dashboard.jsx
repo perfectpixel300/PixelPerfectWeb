@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 import AdminNav from "./AdminNav"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 
 const Dashboard = () => {
+  const location = useLocation;
   const [products, setProducts] = useState([])
   const [page, setPage] = useState(1)
   const [limit] = useState(10)
@@ -11,48 +12,52 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
- useEffect(() => {
-  // AbortController instead of CancelToken
-  const controller = new AbortController();
+  useEffect(() => {
 
-  const fetchProducts = async () => {
-    setLoading(true);
-    setError(null);
+    const fetchProducts = async () => {
+      setLoading(true);
+      setError(null);
 
-    try {
-      const res = await axios.get(
-        `${import.meta.env.VITE_API_URL}/products`,
-        {
-          params: { page, limit },
-          signal: controller.signal, // modern cancellation
+      try {
+        const res = await axios.get(
+          `${import.meta.env.VITE_API_URL}/products`, {
+          params: {
+            page,
+            limit,
+            _t: Date.now()
+          }
         }
-      );
+        );
+        console.log("hellow 2");
 
-      const d = res.data;
-      const items = d.products || d.data || d.results || d.items || [];
 
-      setProducts(Array.isArray(items) ? items : []);
+        console.log(res.data);
 
-      const pages =
-        d.totalPages ||
-        d.pages ||
-        (d.total ? Math.ceil(d.total / limit) : null);
+        const d = res.data;
+        const items = d.products || d.data || d.results || d.items || [];
 
-      if (pages) setTotalPages(pages);
-      else setTotalPages(1);
-    } catch (err) {
-      if (err.name !== "CanceledError") {
-        setError(err.message || "Failed to fetch");
+        setProducts(Array.isArray(items) ? items : []);
+
+        const pages =
+          d.totalPages ||
+          d.pages ||
+          (d.total ? Math.ceil(d.total / limit) : null);
+
+        if (pages) setTotalPages(pages);
+        else setTotalPages(1);
+      } catch (err) {
+        if (err.name !== "CanceledError") {
+          setError(err.message || "Failed to fetch");
+        }
+      } finally {
+        setLoading(false);
       }
-    } finally {
-      setLoading(false);
-    }
-  };
+    };
 
-  fetchProducts();
+    fetchProducts();
+    // cancel on unmount
+  }, [page, limit, location.key]);
 
-  return () => controller.abort(); // cancel on unmount
-}, [page, limit]);
 
   return (
     <>

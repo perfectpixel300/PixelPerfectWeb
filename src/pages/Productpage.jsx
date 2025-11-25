@@ -33,11 +33,11 @@ const Productpage = () => {
         <div className='flex flex-col items-center pt-2 md:pt-5'>
           <h1 className='text-xl md:text-3xl font-semibold text-center'>Browse Our Products</h1>
 
-          <div className='flex flex-wrap gap-y-2 items-center justify-center py-4 md:py-8 gap-x-4 text-[10px] md:text-[15px]'>
+          <div className='flex overflow-x-scroll  w-full  py-4 gap-2 no-scroller md:justify-center  text-[10px] md:text-[15px]'>
             <button
                
                 onClick={() => setActiveCategory("all")}
-                className={`border-[1px] border-[#bbbbbb] cursor-pointer duration-300 px-6 py-2 flex items-center justify-center gap-2 rounded-md
+                className={`border-[1px] border-[#bbbbbb] shrink-0  cursor-pointer duration-300 px-6 py-2 flex items-center justify-center gap-2 rounded-md
                 hover:bg-[#52b345] hover:text-white
                 `}
               >
@@ -49,7 +49,7 @@ const Productpage = () => {
                 onClick={() => {
                   setActiveCategory(cat._id)
                 }}
-                className={`border-[1px] border-[#bbbbbb] cursor-pointer duration-300 px-6 py-2 flex items-center justify-center gap-2 rounded-md
+                className={`border-[1px] shrink-0 border-[#bbbbbb] cursor-pointer duration-300 px-6 py-2 flex items-center justify-center gap-2 rounded-md
                 ${activeCategory === cat.name ? 'bg-[#52b345] text-white' : 'hover:bg-[#52b345] hover:text-white'}
                 `}
               >
