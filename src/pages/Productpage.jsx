@@ -1,14 +1,26 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import PageHeading from '../components/PageHeading'
-import { allProducts, categories } from '../context'
 import ProductCard from '../components/ProductCard'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import ProductsPageInner from './ProductsPageInner'
 
 const Productpage = () => {
+  let navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState('all')
+  const [categories, setCategories] = useState([])
 
-  const filteredProducts = activeCategory === 'all'
-    ? allProducts
-    : allProducts.filter(product => product.category === activeCategory)
+
+
+  useEffect(() => {
+    axios.get(`${import.meta.env.VITE_API_URL}/categories`).then((res) => {
+      setCategories(res.data);
+      
+    }).catch(() => {
+      navigate("/")
+    })
+  },[])
+
 
   return (
     <>
@@ -22,15 +34,26 @@ const Productpage = () => {
           <h1 className='text-xl md:text-3xl font-semibold text-center'>Browse Our Products</h1>
 
           <div className='flex flex-wrap gap-y-2 items-center justify-center py-4 md:py-8 gap-x-4 text-[10px] md:text-[15px]'>
+            <button
+               
+                onClick={() => setActiveCategory("all")}
+                className={`border-[1px] border-[#bbbbbb] cursor-pointer duration-300 px-6 py-2 flex items-center justify-center gap-2 rounded-md
+                hover:bg-[#52b345] hover:text-white
+                `}
+              >
+                <i className={`md:text-xl`}></i> All Products
+              </button>
             {categories.map((cat) => (
               <button
                 key={cat.name}
-                onClick={() => setActiveCategory(cat.name)}
+                onClick={() => {
+                  setActiveCategory(cat._id)
+                }}
                 className={`border-[1px] border-[#bbbbbb] cursor-pointer duration-300 px-6 py-2 flex items-center justify-center gap-2 rounded-md
                 ${activeCategory === cat.name ? 'bg-[#52b345] text-white' : 'hover:bg-[#52b345] hover:text-white'}
                 `}
               >
-                <i className={`${cat.icon} md:text-xl`}></i> {cat.label}
+                <i className={`${cat.icon} md:text-xl`}></i> {cat.name}
               </button>
             ))}
           </div>
@@ -38,13 +61,7 @@ const Productpage = () => {
 
         {/* Products Grid */}
         <div className='flex flex-wrap items-center justify-center gap-4 md:gap-6 mt-6'>
-          {filteredProducts.length > 0 ? (
-            filteredProducts.map((product, index) => (
-                  <ProductCard key={index} product={product}/>
-            ))
-          ) : (
-            <p className='text-center text-gray-500 col-span-full'>No products found in this category right now.</p>
-          )}
+          <ProductsPageInner _id={activeCategory} />
         </div>
       </div>
     </>

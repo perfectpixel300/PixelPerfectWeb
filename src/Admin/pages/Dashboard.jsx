@@ -11,41 +11,48 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
-  useEffect(() => {
-    const source = axios.CancelToken.source()
-    const fetchProducts = async () => {
-      setLoading(true)
-      setError(null)
-      try {
-        // Adjust endpoint as needed. Example: /api/products?page=1&limit=10
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}/products`, {
+ useEffect(() => {
+  // AbortController instead of CancelToken
+  const controller = new AbortController();
+
+  const fetchProducts = async () => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const res = await axios.get(
+        `${import.meta.env.VITE_API_URL}/products`,
+        {
           params: { page, limit },
-          cancelToken: source.token,
-        })
-
-        // Support common response shapes:
-        // { products: [...], page, totalPages } OR { data: [...], page, pages }
-        const d = res.data
-        const items = d.products || d.data || d.results || d.items || []
-        setProducts(Array.isArray(items) ? items : [])
-
-        const pages =
-          d.totalPages || d.pages || (d.total ? Math.ceil(d.total / limit) : null)
-        if (pages) setTotalPages(pages)
-        else if (!Array.isArray(items)) setTotalPages(1)
-        else if (Array.isArray(items)) {
-          // fallback when API doesn't return total: keep current or 1
-          setTotalPages((p) => Math.max(1, p))
+          signal: controller.signal, // modern cancellation
         }
-      } catch (err) {
-        if (!axios.isCancel(err)) setError(err.message || "Failed to fetch")
-      } finally {
-        setLoading(false)
+      );
+
+      const d = res.data;
+      const items = d.products || d.data || d.results || d.items || [];
+
+      setProducts(Array.isArray(items) ? items : []);
+
+      const pages =
+        d.totalPages ||
+        d.pages ||
+        (d.total ? Math.ceil(d.total / limit) : null);
+
+      if (pages) setTotalPages(pages);
+      else setTotalPages(1);
+    } catch (err) {
+      if (err.name !== "CanceledError") {
+        setError(err.message || "Failed to fetch");
       }
+    } finally {
+      setLoading(false);
     }
-    fetchProducts()
-    return () => source.cancel()
-  }, [page, limit])
+  };
+
+  fetchProducts();
+
+  return () => controller.abort(); // cancel on unmount
+}, [page, limit]);
 
   return (
     <>
@@ -58,7 +65,7 @@ const Dashboard = () => {
 
         <div className="grid lg:grid-cols-5 gap-4 md:grid-cols-4 sm:grid-cols-3 grid-cols-1">
           {products.map((p) => (
-            <Link to={`/admin/edit/${p._id}`}>
+            <Link key={p._id} to={`/admin/edit/${p._id}`}>
               <div key={p._id} className="bg-gray-200 p-4 rounded-lg">
                 <div>
                   <img
