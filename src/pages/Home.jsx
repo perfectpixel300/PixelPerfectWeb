@@ -14,18 +14,15 @@ const Home = () => {
 
 
   useEffect(() => {
-    const source = axios.CancelToken.source();
+    
     const base = import.meta.env.VITE_API_URL;
 
-    const mostSoldReq = axios.get(`${base}/products?page=1&limit=6&populate=true`, {
-      cancelToken: source.token,
-    });
-    const recentReq = axios.get(`${base}/products/recent?populate=true`, {
-      cancelToken: source.token,
-    });
+    const mostSoldReq = axios.get(`${base}/products?page=1&limit=6&populate=true`);
+    const recentReq = axios.get(`${base}/products/recent?populate=true`);
 
     Promise.all([mostSoldReq, recentReq])
       .then(([mostRes, recentRes]) => {
+        
         setMostSoldProducts(mostRes.data?.products || []);
         setNewlyAddedProducts(recentRes.data?.products || []);
         console.log("mostSold:", mostRes.data?.products);
@@ -36,9 +33,7 @@ const Home = () => {
         console.error(err);
       });
 
-    return () => {
-      source.cancel("Component unmounted, requests cancelled");
-    };
+    
   }, []);
 
   return (

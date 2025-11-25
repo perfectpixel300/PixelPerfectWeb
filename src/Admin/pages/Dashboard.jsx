@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 import AdminNav from "./AdminNav"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 
 const Dashboard = () => {
+  const location = useLocation;
   const [products, setProducts] = useState([])
   const [page, setPage] = useState(1)
   const [limit] = useState(10)
@@ -12,40 +13,51 @@ const Dashboard = () => {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    const source = axios.CancelToken.source()
-    const fetchProducts = async () => {
-      setLoading(true)
-      setError(null)
-      try {
-        // Adjust endpoint as needed. Example: /api/products?page=1&limit=10
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}/products`, {
-          params: { page, limit },
-          cancelToken: source.token,
-        })
 
-        // Support common response shapes:
-        // { products: [...], page, totalPages } OR { data: [...], page, pages }
-        const d = res.data
-        const items = d.products || d.data || d.results || d.items || []
-        setProducts(Array.isArray(items) ? items : [])
+    const fetchProducts = async () => {
+      setLoading(true);
+      setError(null);
+
+      try {
+        const res = await axios.get(
+          `${import.meta.env.VITE_API_URL}/products`, {
+          params: {
+            page,
+            limit,
+            _t: Date.now()
+          }
+        }
+        );
+        console.log("hellow 2");
+
+
+        console.log(res.data);
+
+        const d = res.data;
+        const items = d.products || d.data || d.results || d.items || [];
+
+        setProducts(Array.isArray(items) ? items : []);
 
         const pages =
-          d.totalPages || d.pages || (d.total ? Math.ceil(d.total / limit) : null)
-        if (pages) setTotalPages(pages)
-        else if (!Array.isArray(items)) setTotalPages(1)
-        else if (Array.isArray(items)) {
-          // fallback when API doesn't return total: keep current or 1
-          setTotalPages((p) => Math.max(1, p))
-        }
+          d.totalPages ||
+          d.pages ||
+          (d.total ? Math.ceil(d.total / limit) : null);
+
+        if (pages) setTotalPages(pages);
+        else setTotalPages(1);
       } catch (err) {
-        if (!axios.isCancel(err)) setError(err.message || "Failed to fetch")
+        if (err.name !== "CanceledError") {
+          setError(err.message || "Failed to fetch");
+        }
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-    }
-    fetchProducts()
-    return () => source.cancel()
-  }, [page, limit])
+    };
+
+    fetchProducts();
+    // cancel on unmount
+  }, [page, limit, location.key]);
+
 
   return (
     <>
@@ -58,7 +70,7 @@ const Dashboard = () => {
 
         <div className="grid lg:grid-cols-5 gap-4 md:grid-cols-4 sm:grid-cols-3 grid-cols-1">
           {products.map((p) => (
-            <Link to={`/admin/edit/${p._id}`}>
+            <Link key={p._id} to={`/admin/edit/${p._id}`}>
               <div key={p._id} className="bg-gray-200 p-4 rounded-lg">
                 <div>
                   <img
