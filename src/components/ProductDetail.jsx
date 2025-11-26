@@ -65,6 +65,7 @@ const ProductDetail = () => {
       setLoading(false);
     }
   };
+  
 
   useEffect(() => {
     fetchProductData();
