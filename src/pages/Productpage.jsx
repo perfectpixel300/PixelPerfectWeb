@@ -58,7 +58,7 @@ const Productpage = () => {
             </button>
 
             {/* LIST CATEGORIES */}
-            {categories.map((cat) => (
+            {categories?.map((cat) => (
               <button
                 key={cat._id}
                 onClick={() => setActiveCategory(cat._id)}

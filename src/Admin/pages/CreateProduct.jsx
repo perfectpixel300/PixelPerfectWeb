@@ -8,10 +8,10 @@ const AddProducts = () => {
     // Refs for simple uncontrolled inputs
     const nameRef = useRef(null)
     const descriptionRef = useRef(null)
-    const stockRef = useRef(null)
     const categoryRef = useRef(null)
     const priceRef = useRef(null)
     const categoryContainer = useRef(null)
+    const [inStock, setInStock] = useState(false)
 
 
     const mainImageRef = useRef(null)
@@ -131,10 +131,8 @@ const AddProducts = () => {
         const name = nameRef.current?.value?.trim() || ""
         const description = descriptionRef.current?.value?.trim() || ""
         const price = priceRef.current?.value || ""
-        const stock = stockRef.current?.value?.trim().toLowerCase() == 'yes' ? true : false;
-
-
-
+        
+        
         // basic validation
         if (!name) {
             setMessage("Product name is required")
@@ -149,7 +147,7 @@ const AddProducts = () => {
         const formData = new FormData()
         formData.append("name", name)
         formData.append("description", description)
-        formData.append("stock", stock)
+        formData.append("inStock", inStock)
         formData.append("price", price)
         formData.append("category", categoryDataID._id)
 
@@ -177,7 +175,7 @@ const AddProducts = () => {
             // clear form UI
             nameRef.current.value = ""
             descriptionRef.current.value = ""
-            stockRef.current.value = ""
+            setInStock(false)
             categoryRef.current.value = ""
             priceRef.current.value = ""
             if (mainImagePreview) URL.revokeObjectURL(mainImagePreview)
@@ -221,7 +219,10 @@ const AddProducts = () => {
 
                                 <div className="stock flex flex-col border-t gap-2 w-full border-gray-200 py-1">
                                     <label htmlFor="stock" className="text-sm font-semibold text-gray-800">Stock</label>
-                                    <input ref={stockRef} className="p-2  duration-500 bg-gray-200  w-full focus:outline-none rounded-lg text-sm" placeholder="Yes or No" id="stock" type="text" />
+                                    <div className="flex items-center gap-2 pb-2 text-sm">
+                                        <div onClick={()=>setInStock(true)} className={(inStock)?"bg-black text-white px-3 py-1 rounded-md cursor-pointer":"bg-gray-300 px-3 py-1 rounded-md cursor-pointer"}>Yes</div>
+                                        <div onClick={()=>setInStock(false)} className={(!inStock)?"bg-black text-white px-3 py-1 rounded-md cursor-pointer":"bg-gray-300 px-3 py-1 rounded-md cursor-pointer"}>No</div>
+                                    </div>
                                 </div>
                                 <div className="price flex flex-col border-t gap-2 w-full border-gray-200 py-1">
                                     <label htmlFor="price" className="text-sm font-semibold text-gray-800">Price</label>

@@ -28,6 +28,7 @@ const EditProducts = () => {
     const [categoryDataID, setcategoryDataID] = useState({})
     const [isLoading, setisLoading] = useState(false)
     const [isDeleteLoading, setIsDeleteLoading] = useState(false)
+    const [inStock, setInStock] = useState(false)
     const deleteHandler = async () => {
         if (!id) {
             setMessage("Invalid product ID")
@@ -90,7 +91,7 @@ const EditProducts = () => {
                 if (nameRef.current) nameRef.current.value = product.name || ""
                 if (descriptionRef.current) descriptionRef.current.value = product.description || ""
                 if (priceRef.current) priceRef.current.value = product.price ?? ""
-                if (stockRef.current) stockRef.current.value = product.inStock ? "Yes" : "No"
+                setInStock(product.inStock)
 
                 // set category values if available
                 if (product.category) {
@@ -139,7 +140,6 @@ const EditProducts = () => {
         const name = nameRef.current?.value?.trim() || ""
         const description = descriptionRef.current?.value?.trim() || ""
         const price = priceRef.current?.value || ""
-        const inStock = (stockRef.current?.value || "").trim().toLowerCase() === 'yes'
 
         if (!name) {
             setMessage("Product name is required")
@@ -202,7 +202,10 @@ const EditProducts = () => {
 
                                 <div className="stock flex flex-col border-t gap-2 w-full border-gray-200 py-1">
                                     <label htmlFor="stock" className="text-sm font-semibold text-gray-800">Stock</label>
-                                    <input ref={stockRef} className="p-2  duration-500 bg-gray-200  w-full focus:outline-none rounded-lg text-sm" placeholder="Yes or No" id="stock" type="text" />
+                                   <div className="flex items-center gap-2 pb-2 text-sm">
+                                        <div onClick={()=>setInStock(true)} className={(inStock)?"bg-black text-white px-3 py-1 rounded-md cursor-pointer":"bg-gray-300 px-3 py-1 rounded-md cursor-pointer"}>Yes</div>
+                                        <div onClick={()=>setInStock(false)} className={(!inStock)?"bg-black text-white px-3 py-1 rounded-md cursor-pointer":"bg-gray-300 px-3 py-1 rounded-md cursor-pointer"}>No</div>
+                                    </div>
                                 </div>
                                 <div className="price flex flex-col border-t gap-2 w-full border-gray-200 py-1">
                                     <label htmlFor="price" className="text-sm font-semibold text-gray-800">Price</label>
