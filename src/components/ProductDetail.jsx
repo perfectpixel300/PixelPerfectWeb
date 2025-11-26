@@ -181,7 +181,7 @@ const ProductDetail = () => {
         </div>
 
         {/* Right - Details */}
-        <div className="md:w-1/2 md:pt-16 flex flex-col gap-4 pl-10">
+        <div className="md:w-1/2 md:pt-16 flex flex-col gap-4 md:pl-10">
           <div>
             <h1 className="text-2xl font-semibold">{product.name}</h1>
             <p className="text-sm text-gray-600 font-light capitalize">
