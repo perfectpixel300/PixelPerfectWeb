@@ -5,6 +5,7 @@ import { Autoplay, FreeMode, Navigation, Pagination } from "swiper/modules";
 import SwiperButtons from "../components/SwiperButtons";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Productpage from "./Productpage";
 
 const Home = () => {
   // hello
@@ -14,7 +15,7 @@ const Home = () => {
 
 
   useEffect(() => {
-    
+
     const base = import.meta.env.VITE_API_URL;
 
     const mostSoldReq = axios.get(`${base}/products?page=1&limit=6&populate=true`);
@@ -22,18 +23,16 @@ const Home = () => {
 
     Promise.all([mostSoldReq, recentReq])
       .then(([mostRes, recentRes]) => {
-        
+
         setMostSoldProducts(mostRes.data?.products || []);
         setNewlyAddedProducts(recentRes.data?.products || []);
-        console.log("mostSold:", mostRes.data?.products);
-        console.log("recent:", recentRes.data?.products);
       })
       .catch((err) => {
         if (axios.isCancel(err)) return;
         console.error(err);
       });
 
-    
+
   }, []);
 
   return (
@@ -86,7 +85,7 @@ const Home = () => {
             >
               <SwiperButtons title="Trending Products" />
               {mostSoldProducts?.map((products) => (
-                <SwiperSlide className="mt-[140px] md:mt-[90px] xl:mt-[90px]" key={products.price}>
+                <SwiperSlide className="mt-[140px] md:mt-[90px] xl:mt-[90px]" key={products._id}>
                   <ProductCard product={products} />
                 </SwiperSlide>
               ))}
@@ -134,14 +133,18 @@ const Home = () => {
             >
               <SwiperButtons title="Newly Added Products" />
               {newlyAddedProducts.map((products) => (
-                <SwiperSlide className="mt-[140px] md:mt-[90px] xl:mt-[90px]" key={products.price}>
+                <SwiperSlide className="mt-[140px] md:mt-[90px] xl:mt-[90px]" key={products._id}>
                   <ProductCard product={products} />
                 </SwiperSlide>
               ))}
             </Swiper>
           </div>
         </div>
-
+        <div className="px-4 md:px-10 flex flex-col mt-10 md:mt-16">
+          <div className="px-5 md:px-10 rounded-2xl bg-[#e7e7e7] ">
+            <Productpage />
+          </div>
+        </div>
       </div>
     </>
   );
