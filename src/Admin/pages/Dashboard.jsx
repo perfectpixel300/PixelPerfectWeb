@@ -24,6 +24,7 @@ const Dashboard = () => {
           params: {
             page,
             limit,
+            dashboard: true,
             _t: Date.now()
           }
         }
