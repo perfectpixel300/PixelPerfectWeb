@@ -84,11 +84,78 @@ const Home = () => {
               }}
             >
               <SwiperButtons title="Trending Products" />
-              {mostSoldProducts?.map((products) => (
-                <SwiperSlide className="mt-[140px] md:mt-[90px] xl:mt-[90px]" key={products._id}>
-                  <ProductCard product={products} />
-                </SwiperSlide>
-              ))}
+              {(mostSoldProducts.length) ? (
+                mostSoldProducts?.map((products) => (
+                  <SwiperSlide className="mt-[140px] md:mt-[90px] xl:mt-[90px]" key={products._id}>
+                    <ProductCard product={products} />
+                  </SwiperSlide>
+                ))
+              ) : (
+                <>
+                  <SwiperSlide className="mt-[140px] md:mt-[90px] xl:mt-[90px] py-5 flex pb-32  items-center justify-center" >
+                    <div className="h-full overflow-hidden animate-pulse delay-300 ">
+                      <div className="bg-gray-400 rounded-2xl h-[80%]">
+
+                      </div>
+                      <div className="bg-gray-400 h-7 mt-2 rounded-2xl w-4/5"></div>
+                      <div className="bg-gray-400  h-7 mt-2 rounded-2xl w-4/6"></div>
+                    </div>
+
+                  </SwiperSlide>
+                   <SwiperSlide className="mt-[140px] md:mt-[90px] xl:mt-[90px] py-5 flex pb-32  items-center justify-center" >
+                    <div className="h-full overflow-hidden animate-pulse ">
+                      <div className="bg-gray-400 rounded-2xl h-[80%]">
+
+                      </div>
+                      <div className="bg-gray-400 h-7 mt-2 rounded-2xl w-4/5"></div>
+                      <div className="bg-gray-400  h-7 mt-2 rounded-2xl w-4/6"></div>
+                    </div>
+
+                  </SwiperSlide>
+                   <SwiperSlide className="mt-[140px] md:mt-[90px] xl:mt-[90px] py-5 flex pb-32  items-center justify-center" >
+                    <div className="h-full overflow-hidden animate-pulse delay-300">
+                      <div className="bg-gray-400 rounded-2xl h-[80%]">
+
+                      </div>
+                      <div className="bg-gray-400 h-7 mt-2 rounded-2xl w-4/5"></div>
+                      <div className="bg-gray-400  h-7 mt-2 rounded-2xl w-4/6"></div>
+                    </div>
+
+                  </SwiperSlide>
+                   <SwiperSlide className="mt-[140px] md:mt-[90px] xl:mt-[90px] py-5 flex pb-32  items-center justify-center" >
+                    <div className="h-full overflow-hidden animate-pulse ">
+                      <div className="bg-gray-400 rounded-2xl h-[80%]">
+
+                      </div>
+                      <div className="bg-gray-400 h-7 mt-2 rounded-2xl w-4/5"></div>
+                      <div className="bg-gray-400  h-7 mt-2 rounded-2xl w-4/6"></div>
+                    </div>
+
+                  </SwiperSlide>
+                  <SwiperSlide className="mt-[140px] md:mt-[90px] xl:mt-[90px] py-5 flex pb-32  items-center justify-center" >
+                    <div className="h-full overflow-hidden animate-pulse delay-300">
+                      <div className="bg-gray-400 rounded-2xl h-[80%]">
+
+                      </div>
+                      <div className="bg-gray-400 h-7 mt-2 rounded-2xl w-4/5"></div>
+                      <div className="bg-gray-400  h-7 mt-2 rounded-2xl w-4/6"></div>
+                    </div>
+
+                  </SwiperSlide>
+                  <SwiperSlide className="mt-[140px] md:mt-[90px] xl:mt-[90px] py-5 flex pb-32  items-center justify-center" >
+                    <div className="h-full overflow-hidden animate-pulse">
+                      <div className="bg-gray-400 rounded-2xl h-[80%]">
+
+                      </div>
+                      <div className="bg-gray-400 h-7 mt-2 rounded-2xl w-4/5"></div>
+                      <div className="bg-gray-400  h-7 mt-2 rounded-2xl w-4/6"></div>
+                    </div>
+
+                  </SwiperSlide>
+                   
+                </>
+
+              )}
             </Swiper>
           </div>
         </div>
@@ -132,16 +199,82 @@ const Home = () => {
               }}
             >
               <SwiperButtons title="Newly Added Products" />
-              {newlyAddedProducts.map((products) => (
-                <SwiperSlide className="mt-[140px] md:mt-[90px] xl:mt-[90px]" key={products._id}>
-                  <ProductCard product={products} />
-                </SwiperSlide>
-              ))}
+              {(newlyAddedProducts.length) ? (
+                newlyAddedProducts.map((products) => (
+                  <SwiperSlide className="mt-[140px] md:mt-[90px] xl:mt-[90px]" key={products._id}>
+                    <ProductCard product={products} />
+                  </SwiperSlide>
+                ))
+              ) : (
+                <>
+                  <SwiperSlide className="mt-[140px] md:mt-[90px] xl:mt-[90px] py-5 flex pb-32  items-center justify-center" >
+                    <div className="h-full overflow-hidden animate-pulse delay-300 ">
+                      <div className="bg-gray-400 rounded-2xl h-[80%]">
+
+                      </div>
+                      <div className="bg-gray-400 h-7 mt-2 rounded-2xl w-4/5"></div>
+                      <div className="bg-gray-400  h-7 mt-2 rounded-2xl w-4/6"></div>
+                    </div>
+
+                  </SwiperSlide>
+                   <SwiperSlide className="mt-[140px] md:mt-[90px] xl:mt-[90px] py-5 flex pb-32  items-center justify-center" >
+                    <div className="h-full overflow-hidden animate-pulse ">
+                      <div className="bg-gray-400 rounded-2xl h-[80%]">
+
+                      </div>
+                      <div className="bg-gray-400 h-7 mt-2 rounded-2xl w-4/5"></div>
+                      <div className="bg-gray-400  h-7 mt-2 rounded-2xl w-4/6"></div>
+                    </div>
+
+                  </SwiperSlide>
+                   <SwiperSlide className="mt-[140px] md:mt-[90px] xl:mt-[90px] py-5 flex pb-32  items-center justify-center" >
+                    <div className="h-full overflow-hidden animate-pulse delay-300">
+                      <div className="bg-gray-400 rounded-2xl h-[80%]">
+
+                      </div>
+                      <div className="bg-gray-400 h-7 mt-2 rounded-2xl w-4/5"></div>
+                      <div className="bg-gray-400  h-7 mt-2 rounded-2xl w-4/6"></div>
+                    </div>
+
+                  </SwiperSlide>
+                   <SwiperSlide className="mt-[140px] md:mt-[90px] xl:mt-[90px] py-5 flex pb-32  items-center justify-center" >
+                    <div className="h-full overflow-hidden animate-pulse ">
+                      <div className="bg-gray-400 rounded-2xl h-[80%]">
+
+                      </div>
+                      <div className="bg-gray-400 h-7 mt-2 rounded-2xl w-4/5"></div>
+                      <div className="bg-gray-400  h-7 mt-2 rounded-2xl w-4/6"></div>
+                    </div>
+
+                  </SwiperSlide>
+                  <SwiperSlide className="mt-[140px] md:mt-[90px] xl:mt-[90px] py-5 flex pb-32  items-center justify-center" >
+                    <div className="h-full overflow-hidden animate-pulse delay-300">
+                      <div className="bg-gray-400 rounded-2xl h-[80%]">
+
+                      </div>
+                      <div className="bg-gray-400 h-7 mt-2 rounded-2xl w-4/5"></div>
+                      <div className="bg-gray-400  h-7 mt-2 rounded-2xl w-4/6"></div>
+                    </div>
+
+                  </SwiperSlide>
+                  <SwiperSlide className="mt-[140px] md:mt-[90px] xl:mt-[90px] py-5 flex pb-32  items-center justify-center" >
+                    <div className="h-full overflow-hidden animate-pulse">
+                      <div className="bg-gray-400 rounded-2xl h-[80%]">
+
+                      </div>
+                      <div className="bg-gray-400 h-7 mt-2 rounded-2xl w-4/5"></div>
+                      <div className="bg-gray-400  h-7 mt-2 rounded-2xl w-4/6"></div>
+                    </div>
+
+                  </SwiperSlide>
+                   
+                </>
+              )}
             </Swiper>
           </div>
         </div>
         <div className="px-4 md:px-10 flex flex-col mt-10 md:mt-16">
-          <div className="px-5 md:px-10 rounded-2xl bg-[#e7e7e7] ">
+          <div className=" rounded-2xl bg-[#e7e7e7] ">
             <Productpage />
           </div>
         </div>

@@ -162,7 +162,7 @@ const ProductDetail = () => {
         />
       </div>
 
-      <div className="px-10 flex flex-col  md:flex-row overflow-x-hidden gap-10 md:gap-0">
+      <div className="px-10 flex flex-col mt-5  md:flex-row overflow-x-hidden gap-10 md:gap-0">
         {/* Left - Main Image */}
         <div className="md:w-1/2 flex flex-col gap-4 md:mt-10">
           <div

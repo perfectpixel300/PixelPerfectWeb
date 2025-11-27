@@ -39,7 +39,7 @@ const Productpage = () => {
       }
 
       {/* Category Filter */}
-      <div className='flex flex-col px-5 md:px-10 py-8'>
+      <div className='flex flex-col px-4 md:px-10 py-8'>
         <div className='flex flex-col items-center pt-2 md:pt-5'>
           <h1 className='text-xl md:text-3xl font-semibold text-center'>
             Browse Our Products
