@@ -12,7 +12,6 @@ const EditProducts = () => {
     // Refs for uncontrolled inputs
     const nameRef = useRef(null)
     const descriptionRef = useRef(null)
-    const stockRef = useRef(null)
     const categoryRef = useRef(null)
     const priceRef = useRef(null)
     const categoryContainer = useRef(null)
