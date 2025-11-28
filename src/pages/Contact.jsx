@@ -24,7 +24,16 @@ const Contact = () => {
                 <button className="bg-[#52b345] text-[#ffffff] text-lg md:text-xl p-3 flex items-center justify-center rounded-xl mt-6 cursor-pointer font-semibold w-1/2">Send Form</button>
               </form>
             </div>
+
           </div>
+        </div>
+
+
+      </div>
+      <div className="px-4 md:px-10  no-margin">
+        <div className='w-full h-full rounded-3xl overflow-hidden'>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6010.387580653012!2d85.3796491!3d27.6418786!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb11007a3e994b%3A0x95a46c02f158603d!2sPixel%20Perfect%20Studio%20and%20Stationery!5e1!3m2!1sen!2snp!4v1764345588536!5m2!1sen!2snp" className='w-full h-96'  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
         </div>
       </div>
     </>
