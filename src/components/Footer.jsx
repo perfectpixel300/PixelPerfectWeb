@@ -98,18 +98,7 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-                <div className="flex md:hidden w-screen px-2 py-5">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3534.445272180274!2d85.37673757479882!3d27.641692228385462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb11007a3e994b%3A0x95a46c02f158603d!2sPixel%20Perfect%20Studio%20and%20Stationery!5e0!3m2!1sen!2snp!4v1762785618676!5m2!1sen!2snp"
-                        width="100%"
-                        height="300px"
-                        allowFullScreen=""
-                        loading="lazy"
-                        className="border-0"
-                        referrerPolicy="no-referrer-when-downgrade"
-                        title="Store Location"
-                    ></iframe>
-                </div>
+              
             </div>
         </>
     )
