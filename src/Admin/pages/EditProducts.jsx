@@ -108,7 +108,7 @@ const EditProducts = () => {
         }
 
         fetchData()
-    }, [id])
+    },[id])
 
     const handleCategorySearch = (e) => {
         categoryContainer.current.classList.remove("hidden")
