@@ -94,13 +94,14 @@ const EditProducts = () => {
 
                 // set category values if available
                 if (product.category) {
+                    console.log(catRes)
                     // product.category could be object or id depending on backend
-                    const catObj = typeof product.category === "object" ? product.category : catRes.data.find(c => c._id === product.category) || {}
+                    const catObj = typeof product.category === "object" ? product.category : catRes.data.data.find(c => c._id === product.category) || {}
                     setcategoryDataID(catObj)
                     if (categoryRef.current && catObj?.name) categoryRef.current.value = catObj.name
                 }
 
-                setCategories(catRes.data || [])
+                setCategories(catRes.data.data || [])
             } catch (err) {
                 console.error("Failed fetching product:", err)
                 setMessage("Failed to load product")

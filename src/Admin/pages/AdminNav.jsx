@@ -15,6 +15,11 @@ const AdminNav = () => {
 
                 </li>
                 <li>
+                    <Link to={"/admin/categories"}>
+                        Categories
+                    </Link>
+                </li>
+                <li>
                     <Link to={"/admin/create-product"}>
                     Create Product
                     </Link>

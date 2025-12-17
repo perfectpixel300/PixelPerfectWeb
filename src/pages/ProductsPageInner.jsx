@@ -50,11 +50,11 @@ const ProductsPageInner = ({ category }) => {
     };
 
     return (
-        <div className='flex flex-col items-center'>
+        <div className='flex flex-col items-center w-full'>
             {/* Products */}
             {
                 products.length ? (
-                    <div className='grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 grid-cols-2 gap-2'>
+                    <div className='grid lg:grid-cols-4 w-full px-10 md:grid-cols-3 sm:grid-cols-2 grid-cols-2 gap-6'>
                         {products.map((pp) => (
                             <ProductCard key={pp._id} product={pp} />
                         ))}

@@ -274,7 +274,7 @@ const Home = () => {
           </div>
         </div>
         <div className="px-4 md:px-10 flex flex-col mt-10 md:mt-16">
-          <div className=" rounded-2xl bg-[#e7e7e7] ">
+          <div className=" rounded-2xl bg-[#e7e7e7]  ">
             <Productpage />
           </div>
         </div>
