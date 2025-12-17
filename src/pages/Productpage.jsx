@@ -16,7 +16,7 @@ const Productpage = () => {
     axios
       .get(`${import.meta.env.VITE_API_URL}/categories`)
       .then((res) => {
-        setCategories(res.data);
+        setCategories(res.data.data);
       })
       .catch(() => {
         navigate("/");
@@ -39,9 +39,9 @@ const Productpage = () => {
       }
 
       {/* Category Filter */}
-      <div className='flex flex-col px-4 md:px-10 py-8'>
+      <div className='flex flex-col py-8'>
         <div className='flex flex-col items-center pt-2 md:pt-5'>
-          <h1 className='text-xl md:text-3xl font-semibold text-center'>
+          <h1 className='text-xl md:text-3xl  font-semibold text-center'>
             Browse Our Products
           </h1>
 
@@ -73,7 +73,7 @@ const Productpage = () => {
         </div>
 
         {/* Products Grid */}
-        <div className='flex flex-wrap items-center justify-center gap-4 md:gap-6 mt-6'>
+        <div className='flex flex-wrap items-center  justify-center gap-4 md:gap-6 mt-6'>
           <ProductsPageInner category={activeCategory} />
         </div>
       </div>

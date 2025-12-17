@@ -9,7 +9,7 @@ const ProductCard = ({ product }) => {
       >
         <div className="flex items-center justify-center p-2">
           <img
-            className="object-cover rounded-xl w-full h-[120px]  md:h-[220px] lg:h-[240px] 2xl:h-[350px]"
+            className="object-cover rounded-xl aspect-square h-[120px]  md:h-[220px] lg:h-[240px] 2xl:h-[350px]"
             src={product?.image?.url}
             alt={product.name}
           />

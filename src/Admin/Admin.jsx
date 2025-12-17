@@ -4,6 +4,8 @@ import ProtectedAdmin from '../components/ProtectedAdmin'
 import Dashboard from './pages/Dashboard'
 import CreateProduct from './pages/CreateProduct'
 import EditProducts from './pages/EditProducts'
+import Categories from './pages/Categories'
+import CategoryDetail from './pages/CategoryDetail'
 
 const AdminLogin = () => {
   return (
@@ -34,6 +36,20 @@ const AdminLogin = () => {
           </ProtectedAdmin>
         } />
 
+
+        <Route path='/categories' element={
+          <ProtectedAdmin>
+            <Categories key={window.location} />
+          </ProtectedAdmin>
+        }
+        />
+
+        <Route path='/categories/:id' element={
+          <ProtectedAdmin>
+            <CategoryDetail />
+          </ProtectedAdmin>
+        }
+        />
       </Routes>
     </div>
   )
