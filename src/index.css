@@ -4,6 +4,10 @@
   src: url("/fonts/Poppins-Regular.ttf");
 }
 
+@theme{
+  --breakpoint-xs : 450px;
+}
+
 
 body {
   font-family: "Poppins", sans-serif;
