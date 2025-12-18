@@ -37,13 +37,21 @@ const CategoryDetail = () => {
     }, [message])
 
     useEffect(() => {
+        console.log("Hello Cate dets 111")
         const fetchProducts = async () => {
+        console.log("Hello Cate dets 5555")
+
             setLoading(true)
             setError(null)
 
             try {
-                const response = await axios.get(
-                    `${import.meta.env.VITE_API_URL}/categories/${id}?populate=true&page=${page}&limit=${limit}`)
+                const response = await axios.get(`${import.meta.env.VITE_API_URL}/categories/${id}?populate=true&page=${page}&limit=${limit}`,
+                    {
+                        params: {
+                            _t: Date.now()
+                        }
+                    }
+                )
 
                 setCategory(response.data)
                 setProducts(response.data.products)
@@ -73,19 +81,16 @@ const CategoryDetail = () => {
         try {
             await axios.delete(`${import.meta.env.VITE_API_URL}/categories/${category.name}`);
             navigate("/admin/categories")
-
         } catch (err) {
             console.log("Error: " + err)
-            setMessage(`Error Deleting Category ${Date().toString()}`)
+            console.log(err)
+            setMessage(`Error Deleting Category: ${err.response.data.message} : ${Date().toString()}`)
         }
     }
 
 
 
 
-
-    if (loading) return <p>Loading...</p>
-    if (error) return <p>Error: {error}</p>
 
     return (
         <div>
@@ -94,63 +99,54 @@ const CategoryDetail = () => {
                 {message}
             </div>
             <AdminNav />
-            <div className='px-28'>
-                <div className="py-5 font-semibold text-xl flex items-center justify-between">
-                    <h1>Category Products</h1>
-                    <button onClick={handleDelete} className="text-sm bg-red-500 px-4 text-white py-2 cursor-pointer rounded-full">Delete Category</button>
-                </div>
+            {loading && <div className=" flex items-center min-h-24 justify-center">
+                <div className="h-10 w-10 border-t-transparent  animate-spin border-4 rounded-full"></div>
+            </div>}
+            {
+                error && <p>
+                    Error: {error}
+                </p>
+            }
+            {(loading || error) ? "" : (
+                <div className='md:px-28 px-5'>
+                    <div className="py-5 font-semibold text-xl flex items-center justify-between">
+                        <h1><span className="capitalize">{category?.name}</span> products</h1>
+                        <button onClick={handleDelete} className="text-sm bg-red-500 px-4 text-white py-2 cursor-pointer rounded-full">Delete Category</button>
+                    </div>
 
-                <div className="grid grid-cols-4 gap-2">
-                    {products.map((p) => (
-                        <Link key={p._id} to={`/admin/edit/${p._id}`}>
-                            <div key={p._id} className="bg-gray-200 p-4 rounded-lg">
-                                <div>
-                                    <img
-                                        src={p.image.url}
-                                        alt={p.name}
-                                        className="h-36 object-cover w-full rounded-md aspect-square"
-                                    />
+                    <div className="grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-2">
+                        {products.map((p) => (
+                            <Link key={p._id} to={`/admin/edit/${p._id}`}>
+                                <div key={p._id} className="bg-gray-200 p-4 rounded-lg">
+                                    <div>
+                                        <img
+                                            src={p.image.url}
+                                            alt={p.name}
+                                            className="h-36 object-cover w-full rounded-md aspect-square"
+                                        />
+                                    </div>
+                                    <h1 className="text-sm font-semibold leading-none mt-2 truncate">{p.name}</h1>
+                                    <div className="text-sm mt-3">{p.price != null ? `$${p.price}` : p.priceText || ""}</div>
+                                    <div className="text-xs truncate">{p.description}</div>
                                 </div>
-                                <h1 className="text-sm font-semibold leading-none mt-2 truncate">{p.name}</h1>
-                                <div className="text-sm mt-3">{p.price != null ? `$${p.price}` : p.priceText || ""}</div>
-                                <div className="text-xs truncate">{p.description}</div>
-                            </div>
-                        </Link>
-                    ))}
+                            </Link>
+                        ))}
+                    </div>
+
+                    {/* Pagination (same UI as Categories) */}
+                   <div className='mt-10 text-sm flex items-center justify-center'>
+                        <button className={`text-center px-2 py-1 ${page === 1 ? "bg-gray-100 text-gray-400" : "bg-gray-300 text-black cursor-pointer"} rounded-md  `} onClick={handlePrev} disabled={page === 1}>
+                            Prev
+                        </button>
+                        <span className='text-center px-2 py-2 rounded-md border border-gray-300 ' style={{ margin: '0 15px' }}>
+                            Page {page} of {totalPages}
+                        </span>
+                        <button className={`text-center px-2 py-1 ${page === totalPages ? "bg-gray-100 text-gray-400" : "bg-gray-300 text-black cursor-pointer"} rounded-md`} onClick={handleNext} disabled={page === totalPages}>
+                            Next
+                        </button>
+                    </div>
                 </div>
-
-                {/* Pagination (same UI as Categories) */}
-                <div className="mt-10 flex justify-center">
-                    <button
-                        className={`w-28 px-2 py-1 rounded-md ${page === 1
-                            ? "bg-gray-100 text-gray-400"
-                            : "bg-gray-300 text-black"
-                            }`}
-                        onClick={handlePrev}
-                        disabled={page === 1}
-                    >
-                        Previous
-                    </button>
-
-                    <span
-                        className="w-28 text-center px-2 py-1 rounded-md border border-gray-300"
-                        style={{ margin: "0 15px" }}
-                    >
-                        Page {page} of {totalPages}
-                    </span>
-
-                    <button
-                        className={`w-28 px-2 py-1 rounded-md ${page === totalPages
-                            ? "bg-gray-100 text-gray-400"
-                            : "bg-gray-300 text-black"
-                            }`}
-                        onClick={handleNext}
-                        disabled={page === totalPages}
-                    >
-                        Next
-                    </button>
-                </div>
-            </div>
+            )}
         </div>
     )
 }

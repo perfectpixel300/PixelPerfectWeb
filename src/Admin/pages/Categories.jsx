@@ -11,11 +11,16 @@ const Categories = () => {
 
     useEffect(() => {
 
+        console.log("Hello");
         const fetchCategories = async () => {
+        console.log("Hell XXX");
             setLoading(true);
             try {
-                const response = await axios.get(`${import.meta.env.VITE_API_URL}/categories?page=${page}&limit=10`);
-
+                const response = await axios.get(`${import.meta.env.VITE_API_URL}/categories?page=${page}&limit=10`, {
+                    params : {
+                        _t: Date.now()
+                    }
+                });
                 setCategories(response.data.data);
                 setTotalPages(response.data.pagination.totalPages);
             } catch (error) {
@@ -40,11 +45,14 @@ const Categories = () => {
     return (
         <div>
             <AdminNav />
+            {loading && <div className=" flex items-center min-h-24 justify-center">
+                <div className="h-10 w-10 border-t-transparent  animate-spin border-4 rounded-full"></div>
+            </div>}
 
-            {loading ? <p>Loading...</p> : (
-                <div className='px-28'>
+            {loading ? "" : (
+                <div className='sm:px-28 px-5'>
                     <h1 className='pt-10 text-xl font-semibold'>All Categories</h1>
-                    <div className='borer  grid grid-cols-4 gap-2 py-10 list-none'>
+                    <div className='borer  grid md:grid-cols-4 gap-2 py-10 list-none'>
                         {categories?.map(cat => (
                             <Link key={cat._id} to={`/admin/categories/${cat._id}`}>
                                 <li className='bg-gray-200 capitalize px-3 py-2 rounded-md'>
@@ -54,14 +62,14 @@ const Categories = () => {
                         ))}
                     </div>
 
-                    <div className='mt-10 flex justify-center'>
-                        <button className={`w-28 text-center px-2 py-1 ${page === 1 ? "bg-gray-100 text-gray-400" : "bg-gray-300 text-black"} rounded-md  `} onClick={handlePrev} disabled={page === 1}>
-                            Previous
+                    <div className='mt-10 text-sm flex items-center justify-center'>
+                        <button className={`text-center px-2 py-1 ${page === 1 ? "bg-gray-100 text-gray-400" : "bg-gray-300 text-black cursor-pointer"} rounded-md  `} onClick={handlePrev} disabled={page === 1}>
+                            Prev
                         </button>
-                        <span className='w-28 text-center px-2 py-1 rounded-md border border-gray-300 ' style={{ margin: '0 15px' }}>
+                        <span className='text-center px-2 py-2 rounded-md border border-gray-300 ' style={{ margin: '0 15px' }}>
                             Page {page} of {totalPages}
                         </span>
-                        <button className={`w-28 text-center px-2 py-1 ${page === totalPages ? "bg-gray-100 text-gray-400" : "bg-gray-300 text-black"} rounded-md`} onClick={handleNext} disabled={page === totalPages}>
+                        <button className={`text-center px-2 py-1 ${page === totalPages ? "bg-gray-100 text-gray-400" : "bg-gray-300 text-black cursor-pointer"} rounded-md`} onClick={handleNext} disabled={page === totalPages}>
                             Next
                         </button>
                     </div>

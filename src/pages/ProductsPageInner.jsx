@@ -71,7 +71,7 @@ const ProductsPageInner = ({ category }) => {
                     onClick={() => handlePageChange(page - 1)}
                     className='bg-gray-300 rounded-md p-1 px-3 cursor-pointer disabled:opacity-50'
                 >
-                    Previous
+                    Prev
                 </button>
 
                 <span className='border-gray-300 border rounded-md p-1 px-3'>

@@ -66,10 +66,12 @@ const Dashboard = () => {
       <div className="md:px-15 px-5">
         <h1 className="mb-4">All Products</h1>
 
-        {loading && <p>Loading...</p>}
+        {loading && <div className=" flex items-center min-h-24 justify-center">
+          <div className="h-10 w-10 border-t-transparent  animate-spin border-4 rounded-full"></div>
+        </div>}
         {error && <p style={{ color: "red" }}>{error}</p>}
 
-        <div className="grid lg:grid-cols-5 gap-4 md:grid-cols-4 sm:grid-cols-3 grid-cols-1">
+        <div className="grid lg:grid-cols-5 gap-4 md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1">
           {products.map((p) => (
             <Link key={p._id} to={`/admin/edit/${p._id}`}>
               <div key={p._id} className="bg-gray-200 p-4 rounded-lg">
@@ -89,13 +91,13 @@ const Dashboard = () => {
         </div>
 
         <div className="flex gap-2 justify-center items-center p-4 text-sm">
-          <button className="bg-gray-300 cursor-pointer p-1 px-2 rounded-md" onClick={() => setPage((s) => Math.max(1, s - 1))} disabled={page <= 1 || loading}>
+          <button className={(page <= 1 || loading) ? `bg-gray-200 text-gray-500 p-1 px-2 rounded-md` : `bg-gray-300 cursor-pointer p-1 px-2 rounded-md`} onClick={() => setPage((s) => Math.max(1, s - 1))} disabled={page <= 1 || loading}>
             Prev
           </button>
           <span className="border-gray-300 border p-2 px-4 rounded-md">
             Page {page} of {totalPages}
           </span>
-          <button className="bg-gray-300 cursor-pointer p-1 px-2 rounded-md" onClick={() => setPage((s) => Math.min(totalPages, s + 1))} disabled={page >= totalPages || loading}>
+          <button className={(page >= totalPages || loading) ? `bg-gray-200 text-gray-500 p-1 px-2 rounded-md` : `bg-gray-300 cursor-pointer p-1 px-2 rounded-md`} onClick={() => setPage((s) => Math.min(totalPages, s + 1))} disabled={page >= totalPages || loading}>
             Next
           </button>
         </div>
