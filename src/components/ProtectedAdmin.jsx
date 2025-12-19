@@ -11,7 +11,6 @@ const ProtectedAdmin = ({ children }) => {
             withCredentials: true
         }).then(result => {
             {
-                console.log(result);
                 if (result.data.isAdmin) {
                     setIsAdmin(true)
                 }

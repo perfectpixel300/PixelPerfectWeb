@@ -6,6 +6,7 @@ import CreateProduct from './pages/CreateProduct'
 import EditProducts from './pages/EditProducts'
 import Categories from './pages/Categories'
 import CategoryDetail from './pages/CategoryDetail'
+import Banners from './pages/Banners'
 
 const AdminLogin = () => {
   return (
@@ -47,6 +48,12 @@ const AdminLogin = () => {
         <Route path='/categories/:id' element={
           <ProtectedAdmin>
             <CategoryDetail />
+          </ProtectedAdmin>
+        }
+        />
+        <Route path='/banners' element={
+          <ProtectedAdmin>
+            <Banners />
           </ProtectedAdmin>
         }
         />
