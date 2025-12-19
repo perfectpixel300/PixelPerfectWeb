@@ -11,9 +11,7 @@ const Categories = () => {
 
     useEffect(() => {
 
-        console.log("Hello");
         const fetchCategories = async () => {
-        console.log("Hell XXX");
             setLoading(true);
             try {
                 const response = await axios.get(`${import.meta.env.VITE_API_URL}/categories?page=${page}&limit=10`, {
