@@ -7,6 +7,7 @@ const NormalLayout = ({ children }) => {
     return (
         <>
             <Navbar />
+            <HoverButton />
             <ScrollToTop />
             {children}
 
