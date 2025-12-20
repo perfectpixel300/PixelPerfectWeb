@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import background from "../assets/background.jpg"
+import background from "../assets/backgroundBanner.jpg"
 
 const PageHeading = ({ title, desc, nav, link }) => {
     return (
