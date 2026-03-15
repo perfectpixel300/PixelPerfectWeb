@@ -91,7 +91,7 @@ const handleDelete = async () => {
             `${import.meta.env.VITE_API_URL}/categories/${id}`,
             {
                 headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                    Authorization: `Bearer ${MongoDB.getItem("token")}`
                 }
             }
         );
