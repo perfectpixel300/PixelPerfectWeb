@@ -78,14 +78,16 @@ const CategoryDetail = () => {
 
 
 const handleDelete = async () => {
-
+    // Confirm with admin
     const confirmDelete = window.confirm(
         `Are you sure you want to delete the category "${category?.name}"?`
     );
     if (!confirmDelete) return;
 
     try {
-        await axios.delete(
+        console.log("Sending DELETE request for ID:", id);
+        
+        const response = await axios.delete(
             `${import.meta.env.VITE_API_URL}/categories/${id}`,
             {
                 headers: {
@@ -94,6 +96,7 @@ const handleDelete = async () => {
             }
         );
 
+        console.log("Delete response:", response.data);
         alert("Category deleted successfully!");
         navigate("/admin/categories");
 
