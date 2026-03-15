@@ -78,6 +78,12 @@ const CategoryDetail = () => {
 
 
 const handleDelete = async () => {
+
+    const confirmDelete = window.confirm(
+        `Are you sure you want to delete the category "${category?.name}"?`
+    );
+    if (!confirmDelete) return;
+
     try {
         await axios.delete(
             `${import.meta.env.VITE_API_URL}/categories/${id}`,
@@ -88,8 +94,18 @@ const handleDelete = async () => {
             }
         );
 
+        alert("Category deleted successfully!");
         navigate("/admin/categories");
 
+    } catch (err) {
+        console.error("Delete error:", err);
+        setMessage(
+            `Error Deleting Category: ${
+                err.response?.data?.message || "Unknown error"
+            }`
+        );
+    }
+};
     } catch (err) {
         console.log("Error:", err);
 
