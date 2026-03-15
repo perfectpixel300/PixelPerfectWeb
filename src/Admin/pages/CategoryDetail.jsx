@@ -77,16 +77,29 @@ const CategoryDetail = () => {
     }
 
 
-    const handleDelete = async () => {
-        try {
-            await axios.delete(`${import.meta.env.VITE_API_URL}/categories/${category.name}`);
-            navigate("/admin/categories")
-        } catch (err) {
-            console.log("Error: " + err)
-            console.log(err)
-            setMessage(`Error Deleting Category: ${err.response.data.message} : ${Date().toString()}`)
-        }
+const handleDelete = async () => {
+    try {
+        await axios.delete(
+            `${import.meta.env.VITE_API_URL}/categories/${id}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                }
+            }
+        );
+
+        navigate("/admin/categories");
+
+    } catch (err) {
+        console.log("Error:", err);
+
+        setMessage(
+            `Error Deleting Category: ${
+                err.response?.data?.message || "Unknown error"
+            } : ${Date().toString()}`
+        );
     }
+};
 
 
 
