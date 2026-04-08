@@ -90,9 +90,7 @@ const handleDelete = async () => {
         const response = await axios.delete(
             `${import.meta.env.VITE_API_URL}/categories/${id}`,
             {
-                headers: {
-                    Authorization: `Bearer ${MongoDB.getItem("token")}`
-                }
+               withCredentials: true,
             }
         );
 
@@ -109,17 +107,6 @@ const handleDelete = async () => {
         );
     }
 };
-    } catch (err) {
-        console.log("Error:", err);
-
-        setMessage(
-            `Error Deleting Category: ${
-                err.response?.data?.message || "Unknown error"
-            } : ${Date().toString()}`
-        );
-    }
-};
-
 
 
 
