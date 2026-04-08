@@ -95,7 +95,6 @@ const handleDelete = async () => {
         );
 
         console.log("Delete response:", response.data);
-        alert("Category deleted successfully!");
         navigate("/admin/categories");
 
     } catch (err) {
