@@ -204,7 +204,7 @@ const Navbar = () => {
                         <div className="w-10 h-10 rounded-lg overflow-hidden shrink-0 bg-gray-100">
                           {product.image ? (
                             <img
-                              src={product.image}
+                              src={product.image.url}
                               alt={product.name}
                               className="w-full h-full object-cover"
                             />
