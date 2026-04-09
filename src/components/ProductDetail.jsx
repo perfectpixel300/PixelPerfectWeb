@@ -65,7 +65,7 @@ const ProductDetail = () => {
       setLoading(false);
     }
   };
-  
+
 
   useEffect(() => {
     fetchProductData();
@@ -229,6 +229,8 @@ const ProductDetail = () => {
           <div className="w-full h-[1px] bg-gray-300 rounded-full my-2"></div>
         </div>
       </div>
+      <script src="https://elfsightcdn.com/platform.js" async></script>
+      <div class="elfsight-app-e198d81c-ae8a-4b59-ac37-d04e0170ff8c" data-elfsight-app-lazy></div>
     </>
   );
 };
