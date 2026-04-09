@@ -14,7 +14,7 @@ const Productpage = () => {
   useEffect(() => {
 
     axios
-      .get(`${import.meta.env.VITE_API_URL}/categories`)
+      .get(`${import.meta.env.VITE_API_URL}/categories/?limit=20`)
       .then((res) => {
         setCategories(res.data.data);
       })

@@ -3,7 +3,7 @@ import CacheAxios from '../CacheAxios';
 import ProductCard from '../components/ProductCard';
 
 const ProductsPageInner = ({ category }) => {
-    const limit = 10;
+    const limit = 28;
 
     // Pagination state per category
     const [categoryPages, setCategoryPages] = useState({});
