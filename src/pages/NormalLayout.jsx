@@ -11,9 +11,7 @@ const NormalLayout = ({ children }) => {
             <HoverButton />
             <ScrollToTop />
             {children}
-            <div className="mt-10">
-                <HeroSlider />
-            </div>
+            
 
             <Footer />
         </>
