@@ -71,7 +71,7 @@ const Navbar = () => {
     }
     setLoading(true);
     try {
-      const res = await fetch(`${API_BASE}/api/products/search?q=${encodeURIComponent(q)}&populate=true`);
+      const res = await fetch(`${API_BASE}/products/search?q=${encodeURIComponent(q)}&populate=true`);
       const data = await res.json();
       setSuggestions(data.products || []);
       setShowDropdown(true);
