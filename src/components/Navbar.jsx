@@ -114,7 +114,7 @@ const Navbar = () => {
   };
 
   const goToProduct = (product) => {
-    navigate(`/products/${product._id}`);
+    navigate(`/product/${product._id}`);
     setQuery(product.name);
     setShowDropdown(false);
     setActiveIndex(-1);
