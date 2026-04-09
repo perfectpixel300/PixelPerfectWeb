@@ -226,7 +226,7 @@ const AddProducts = () => {
                                 </div>
                                 <div className="price flex flex-col border-t gap-2 w-full border-gray-200 py-1">
                                     <label htmlFor="price" className="text-sm font-semibold text-gray-800">Price</label>
-                                    <input ref={priceRef} className="p-2  duration-500 bg-gray-200  w-full focus:outline-none rounded-lg text-sm" placeholder="Rs. XXXX" id="stock" type="number" />
+                                    <input ref={priceRef} className="p-2  duration-500 bg-gray-200  w-full focus:outline-none rounded-lg text-sm" placeholder="Rs. XXXX" id="stock" type="number" step="any" />
                                 </div>
                             </div>
                             <div className="bg-gray-100/50 rounded-2xl mt-5">
