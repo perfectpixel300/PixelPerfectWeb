@@ -43,6 +43,10 @@ const ProductsPageInner = ({ category }) => {
     }, [category, page]);
 
     const handlePageChange = (newPage) => {
+        document.getElementById("target-id").scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
         setCategoryPages((prev) => ({
             ...prev,
             [category]: newPage
@@ -59,10 +63,10 @@ const ProductsPageInner = ({ category }) => {
                             <ProductCard key={pp._id} product={pp} />
                         ))}
                     </div>
-                ):(
+                ) : (
                     <p className='text-gray-500 text-sm py-3'>No Products Found in this category</p>
                 )
-      }
+            }
 
             {/* Pagination */}
             <div className='flex w-full justify-center gap-4 items-center mt-5 '>

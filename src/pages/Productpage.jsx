@@ -41,7 +41,7 @@ const Productpage = () => {
       {/* Category Filter */}
       <div className='flex flex-col py-8'>
         <div className='flex flex-col items-center pt-2 md:pt-5'>
-          <h1 className='text-xl md:text-3xl  font-semibold text-center'>
+          <h1 id='browse-section' className='text-xl md:text-3xl  font-semibold text-center'>
             Browse Our Products
           </h1>
 
