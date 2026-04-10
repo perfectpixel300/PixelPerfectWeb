@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
   return (
-    <div className="bg-[#f1f1f1] text-[#222222] rounded-2xl overflow-hidden shadow-xs flex flex-col h-[220px] md:h-auto m  2xl:h-[470px]">
+    <div className="bg-[#f1f1f1] text-[#222222] rounded-2xl overflow-hidden shadow-xs flex flex-col h-[220px] md:h-auto 2xl:h-[470px]">
       {/* Image Section */}
       <Link
         to={`/product/${product._id}`}
@@ -18,7 +18,7 @@ const ProductCard = ({ product }) => {
 
 
       {/* Text Section */}
-      <div className="flex flex-col flex-grow justify-between px-4 pb-4">
+      <div className="flex flex-col flex-grow justify-between px-4 pb-5">
         <div className="flex flex-col">
           <p className="text-[10px] sm:text-xs 2xl:text-base text-[#52b345] uppercase tracking-wide md:mb-1">
             {product.category.name}
@@ -30,8 +30,8 @@ const ProductCard = ({ product }) => {
 
         {/* Price & Button */}
         <div className="flex items-center justify-between md:mt-3 ">
-          <div>
-            <p className={`font-light text-base ${product.inStock ? "text-green-600" : "text-red-500"}`}>
+          <div className="flex flex-col">
+            <p className={`font-light text-xs md:text-base ${product.inStock ? "text-green-600" : "text-red-500"}`}>
               {product.inStock ? "Available" : "Sold Out"}
             </p>
             <p className="text-[#1CAC08] font-semibold text-[11px] md:text-base">
