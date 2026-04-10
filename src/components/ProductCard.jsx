@@ -30,8 +30,8 @@ const ProductCard = ({ product }) => {
 
         {/* Price & Button */}
         <div className="flex items-center justify-between md:mt-3 ">
-          <div>
-            <p className={`font-light text-[10px] md:text-[12px] ${product.inStock ? "text-green-600" : "text-red-500"}`}>
+          <div className="flex flex-col">
+            <p className={`font-light text-[8px] md:text-[10px] ${product.inStock ? "text-green-600" : "text-red-500"}`}>
               {product.inStock ? "Available" : "Sold Out"}
             </p>
             <p className="text-[#1CAC08] font-semibold text-[11px] md:text-base">
