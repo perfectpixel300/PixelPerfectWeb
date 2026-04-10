@@ -31,7 +31,7 @@ const ProductCard = ({ product }) => {
         {/* Price & Button */}
         <div className="flex items-center justify-between md:mt-3 ">
           <div>
-            <p className={`font-light text-[10px] ${product.inStock ? "text-green-600" : "text-red-500"}`}>
+            <p className={`font-light text-base ${product.inStock ? "text-green-600" : "text-red-500"}`}>
               {product.inStock ? "Available" : "Sold Out"}
             </p>
             <p className="text-[#1CAC08] font-semibold text-[11px] md:text-base">
