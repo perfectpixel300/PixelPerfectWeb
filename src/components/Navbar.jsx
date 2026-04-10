@@ -128,7 +128,7 @@ const Navbar = () => {
   };
 
   return (
-    <>
+    < >
       <div>
         <div className="largeScreen-navbar w-[100vw] flex items-center py-4 md:py-6 lg:py-[10px] px-6 md:px-14 fixed z-50 bg-[#ffffff] gap-2 justify-between">
 
@@ -235,6 +235,7 @@ const Navbar = () => {
             )}
           </div>
 
+
           {/* Nav links */}
           <div className="hidden lg:flex items-center justify-center gap-x-4">
             {navLinks.map((nav, index) => (
@@ -286,6 +287,97 @@ const Navbar = () => {
           </div>
           <div className="h-[1px] bg-[#9b9b9b] rounded-full w-full my-4" />
         </div>
+      </div>
+
+      <div
+        ref={searchWrapperRef}
+        className="relative flex md:hidden items-center justify-center top-20 w-[80%] left-1/2 -translate-x-1/2"
+        onMouseEnter={handleEnter}
+        onMouseLeave={handleLeave}
+      >
+        {/* animated bottom line */}
+        <div
+          ref={lineRef}
+          className="absolute w-[0%] h-[2px] bg-[#129900] bottom-0 left-1/2 -translate-x-[50%] rounded-full"
+        />
+
+        {/* input */}
+        <label
+          htmlFor="search"
+          className="outline-[#c0c0c0] hover:text-[#129900] outline-1 px-4 py-2 text-sm flex items-center justify-between rounded-full w-full"
+        >
+          <input
+            type="search"
+            name="search"
+            id="search"
+            value={query}
+            onChange={handleChange}
+            onKeyDown={handleKeyDown}
+            onFocus={() => query.trim() && suggestions.length && setShowDropdown(true)}
+            placeholder="Search for products | services"
+            className="outline-none w-full"
+            autoComplete="off"
+          />
+          <IoSearch
+            className="label-icon cursor-pointer shrink-0"
+            onClick={handleSearchSubmit}
+          />
+        </label>
+
+        {/* ── Dropdown ── */}
+        {showDropdown && (
+          <div className="absolute top-full mt-2 w-full bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden z-[9999]">
+            {loading ? (
+              <div className="flex items-center gap-3 px-4 py-3 text-gray-400 text-sm">
+                <div className="w-4 h-4 border-2 border-[#129900] border-t-transparent rounded-full animate-spin" />
+                Searching…
+              </div>
+            ) : suggestions.length === 0 ? (
+              <div className="px-4 py-3 text-gray-400 text-sm">No results for "{query}"</div>
+            ) : (
+              <ul>
+                {suggestions.map((product, i) => (
+                  <li
+                    key={product._id}
+                    onMouseEnter={() => setActiveIndex(i)}
+                    onMouseLeave={() => setActiveIndex(-1)}
+                    onClick={() => goToProduct(product)}
+                    className={`flex items-center gap-3 px-4 py-2.5 cursor-pointer transition-colors duration-150 ${activeIndex === i ? "bg-[#f0fff0]" : "hover:bg-gray-50"
+                      }`}
+                  >
+                    {/* product image */}
+                    <div className="w-10 h-10 rounded-lg overflow-hidden shrink-0 bg-gray-100">
+                      {product.image ? (
+                        <img
+                          src={product.image.url}
+                          alt={product.name}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center text-gray-300 text-xs">?</div>
+                      )}
+                    </div>
+
+                    {/* text */}
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-medium text-gray-800 truncate">{product.name}</p>
+                      {product.category?.name && (
+                        <p className="text-xs text-gray-400 truncate">{product.category.name}</p>
+                      )}
+                    </div>
+
+                    {/* price */}
+                    {product.price != null && (
+                      <span className="text-sm font-semibold text-[#129900] shrink-0">
+                        Rs. {product.price}
+                      </span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        )}
       </div>
     </>
   );
