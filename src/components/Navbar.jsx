@@ -14,6 +14,8 @@ const Navbar = () => {
   const mobileNavRef = useRef(null);
   const linkLine = useRef([]);
   const searchWrapperRef = useRef(null);
+  const mobileSearchWrapperRef = useRef(null);
+  const mobileInputRef = useRef(null);
   const debounceTimer = useRef(null);
 
   const [isOpen, setisOpen] = useState(false);
@@ -22,6 +24,15 @@ const Navbar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [loading, setLoading] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
+
+  // Mobile search state
+  const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
+  const [mobileQuery, setMobileQuery] = useState("");
+  const [mobileSuggestions, setMobileSuggestions] = useState([]);
+  const [mobileShowDropdown, setMobileShowDropdown] = useState(false);
+  const [mobileLoading, setMobileLoading] = useState(false);
+  const [mobileActiveIndex, setMobileActiveIndex] = useState(-1);
+  const mobileDebounceTimer = useRef(null);
 
   const navigate = useNavigate();
 
@@ -50,7 +61,7 @@ const Navbar = () => {
     return () => { document.body.style.overflow = "auto"; };
   }, [isOpen]);
 
-  // ── Click outside to close dropdown ─────────────────────────
+  // ── Click outside to close desktop dropdown ─────────────────
   useEffect(() => {
     const handler = (e) => {
       if (searchWrapperRef.current && !searchWrapperRef.current.contains(e.target)) {
@@ -62,7 +73,32 @@ const Navbar = () => {
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
-  // ── Debounced search fetch ───────────────────────────────────
+  // ── Click outside to close mobile search ────────────────────
+  useEffect(() => {
+    const handler = (e) => {
+      if (
+        mobileSearchWrapperRef.current &&
+        !mobileSearchWrapperRef.current.contains(e.target)
+      ) {
+        setMobileShowDropdown(false);
+        setMobileActiveIndex(-1);
+        setMobileSearchOpen(false);
+        setMobileQuery("");
+        setMobileSuggestions([]);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
+
+  // Focus mobile input when search opens
+  useEffect(() => {
+    if (mobileSearchOpen && mobileInputRef.current) {
+      mobileInputRef.current.focus();
+    }
+  }, [mobileSearchOpen]);
+
+  // ── Debounced search fetch (desktop) ────────────────────────
   const fetchSuggestions = useCallback(async (q) => {
     if (!q.trim()) {
       setSuggestions([]);
@@ -82,6 +118,26 @@ const Navbar = () => {
     }
   }, []);
 
+  // ── Debounced search fetch (mobile) ─────────────────────────
+  const fetchMobileSuggestions = useCallback(async (q) => {
+    if (!q.trim()) {
+      setMobileSuggestions([]);
+      setMobileShowDropdown(false);
+      return;
+    }
+    setMobileLoading(true);
+    try {
+      const res = await fetch(`${API_BASE}/products/search?q=${encodeURIComponent(q)}&populate=true`);
+      const data = await res.json();
+      setMobileSuggestions(data.products || []);
+      setMobileShowDropdown(true);
+    } catch {
+      setMobileSuggestions([]);
+    } finally {
+      setMobileLoading(false);
+    }
+  }, []);
+
   const handleChange = (e) => {
     const val = e.target.value;
     setQuery(val);
@@ -90,7 +146,15 @@ const Navbar = () => {
     debounceTimer.current = setTimeout(() => fetchSuggestions(val), 300);
   };
 
-  // ── Keyboard navigation ──────────────────────────────────────
+  const handleMobileChange = (e) => {
+    const val = e.target.value;
+    setMobileQuery(val);
+    setMobileActiveIndex(-1);
+    clearTimeout(mobileDebounceTimer.current);
+    mobileDebounceTimer.current = setTimeout(() => fetchMobileSuggestions(val), 300);
+  };
+
+  // ── Keyboard navigation (desktop) ───────────────────────────
   const handleKeyDown = (e) => {
     if (!showDropdown) return;
     if (e.key === "ArrowDown") {
@@ -113,11 +177,45 @@ const Navbar = () => {
     }
   };
 
+  // ── Keyboard navigation (mobile) ────────────────────────────
+  const handleMobileKeyDown = (e) => {
+    if (!mobileShowDropdown) return;
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      setMobileActiveIndex((prev) => Math.min(prev + 1, mobileSuggestions.length - 1));
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      setMobileActiveIndex((prev) => Math.max(prev - 1, -1));
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      if (mobileActiveIndex >= 0 && mobileSuggestions[mobileActiveIndex]) {
+        goToProductMobile(mobileSuggestions[mobileActiveIndex]);
+      } else if (mobileQuery.trim()) {
+        navigate(`/search?q=${encodeURIComponent(mobileQuery)}`);
+        setMobileShowDropdown(false);
+        setMobileSearchOpen(false);
+      }
+    } else if (e.key === "Escape") {
+      setMobileShowDropdown(false);
+      setMobileActiveIndex(-1);
+      setMobileSearchOpen(false);
+      setMobileQuery("");
+    }
+  };
+
   const goToProduct = (product) => {
     navigate(`/product/${product._id}`);
     setQuery(product.name);
     setShowDropdown(false);
     setActiveIndex(-1);
+  };
+
+  const goToProductMobile = (product) => {
+    navigate(`/product/${product._id}`);
+    setMobileQuery(product.name);
+    setMobileShowDropdown(false);
+    setMobileActiveIndex(-1);
+    setMobileSearchOpen(false);
   };
 
   const handleSearchSubmit = () => {
@@ -127,8 +225,24 @@ const Navbar = () => {
     }
   };
 
+  const handleMobileSearchSubmit = () => {
+    if (mobileQuery.trim()) {
+      navigate(`/search?q=${encodeURIComponent(mobileQuery)}`);
+      setMobileShowDropdown(false);
+      setMobileSearchOpen(false);
+    }
+  };
+
+  const handleMobileSearchIconClick = () => {
+    if (mobileSearchOpen) {
+      handleMobileSearchSubmit();
+    } else {
+      setMobileSearchOpen(true);
+    }
+  };
+
   return (
-    < >
+    <>
       <div>
         <div className="largeScreen-navbar w-[100vw] flex items-center py-4 md:py-6 lg:py-[10px] px-6 md:px-14 fixed z-50 bg-[#ffffff] gap-2 justify-between">
 
@@ -150,13 +264,10 @@ const Navbar = () => {
             onMouseEnter={handleEnter}
             onMouseLeave={handleLeave}
           >
-            {/* animated bottom line */}
             <div
               ref={lineRef}
               className="absolute w-[0%] h-[2px] bg-[#129900] bottom-0 left-1/2 -translate-x-[50%] rounded-full"
             />
-
-            {/* input */}
             <label
               htmlFor="search"
               className="outline-[#c0c0c0] hover:text-[#129900] outline-1 px-4 py-2 text-sm flex items-center justify-between rounded-full w-full"
@@ -179,7 +290,6 @@ const Navbar = () => {
               />
             </label>
 
-            {/* ── Dropdown ── */}
             {showDropdown && (
               <div className="absolute top-full mt-2 w-full bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden z-[9999]">
                 {loading ? (
@@ -197,35 +307,23 @@ const Navbar = () => {
                         onMouseEnter={() => setActiveIndex(i)}
                         onMouseLeave={() => setActiveIndex(-1)}
                         onClick={() => goToProduct(product)}
-                        className={`flex items-center gap-3 px-4 py-2.5 cursor-pointer transition-colors duration-150 ${activeIndex === i ? "bg-[#f0fff0]" : "hover:bg-gray-50"
-                          }`}
+                        className={`flex items-center gap-3 px-4 py-2.5 cursor-pointer transition-colors duration-150 ${activeIndex === i ? "bg-[#f0fff0]" : "hover:bg-gray-50"}`}
                       >
-                        {/* product image */}
                         <div className="w-10 h-10 rounded-lg overflow-hidden shrink-0 bg-gray-100">
                           {product.image ? (
-                            <img
-                              src={product.image.url}
-                              alt={product.name}
-                              className="w-full h-full object-cover"
-                            />
+                            <img src={product.image.url} alt={product.name} className="w-full h-full object-cover" />
                           ) : (
                             <div className="w-full h-full flex items-center justify-center text-gray-300 text-xs">?</div>
                           )}
                         </div>
-
-                        {/* text */}
                         <div className="flex-1 min-w-0">
                           <p className="text-sm font-medium text-gray-800 truncate">{product.name}</p>
                           {product.category?.name && (
                             <p className="text-xs text-gray-400 truncate">{product.category.name}</p>
                           )}
                         </div>
-
-                        {/* price */}
                         {product.price != null && (
-                          <span className="text-sm font-semibold text-[#129900] shrink-0">
-                            Rs. {product.price}
-                          </span>
+                          <span className="text-sm font-semibold text-[#129900] shrink-0">Rs. {product.price}</span>
                         )}
                       </li>
                     ))}
@@ -234,7 +332,6 @@ const Navbar = () => {
               </div>
             )}
           </div>
-
 
           {/* Nav links */}
           <div className="hidden lg:flex items-center justify-center gap-x-4">
@@ -251,10 +348,90 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Burger */}
-          <div ref={burgerRef} onClick={handleOpen} className="flex items-center justify-center lg:hidden cursor-pointer">
-            <i className="ri-menu-line text-3xl" />
+          {/* ── Mobile: Search icon + Burger ── */}
+          <div className="flex items-center gap-2 lg:hidden">
+
+            {/* Mobile search area */}
+            <div ref={mobileSearchWrapperRef} className="relative flex items-center md:hidden">
+              {/* Expanding input */}
+              <div
+                className={`flex items-center overflow-hidden transition-all duration-300 ease-in-out ${
+                  mobileSearchOpen ? "w-[100px] border border-gray-300 rounded-full px-3" : "w-0"
+                } bg-white`}
+              >
+                <input
+                  ref={mobileInputRef}
+                  type="search"
+                  value={mobileQuery}
+                  onChange={handleMobileChange}
+                  onKeyDown={handleMobileKeyDown}
+                  placeholder="Search..."
+                  className="outline-none text-sm w-full py-1.5 bg-transparent"
+                  autoComplete="off"
+                />
+              </div>
+
+              {/* Search icon button */}
+              <button
+                onClick={handleMobileSearchIconClick}
+                className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-gray-100 transition-colors duration-150 shrink-0"
+                aria-label="Search"
+              >
+                <IoSearch className="text-2xl text-gray-700" />
+              </button>
+
+              {/* Mobile dropdown */}
+              {mobileSearchOpen && mobileShowDropdown && (
+                <div className="absolute top-full right-0 mt-2 w-[280px] bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden z-[9999]">
+                  {mobileLoading ? (
+                    <div className="flex items-center gap-3 px-4 py-3 text-gray-400 text-sm">
+                      <div className="w-4 h-4 border-2 border-[#129900] border-t-transparent rounded-full animate-spin" />
+                      Searching…
+                    </div>
+                  ) : mobileSuggestions.length === 0 ? (
+                    <div className="px-4 py-3 text-gray-400 text-sm">No results for "{mobileQuery}"</div>
+                  ) : (
+                    <ul>
+                      {mobileSuggestions.map((product, i) => (
+                        <li
+                          key={product._id}
+                          onMouseEnter={() => setMobileActiveIndex(i)}
+                          onMouseLeave={() => setMobileActiveIndex(-1)}
+                          onClick={() => goToProductMobile(product)}
+                          className={`flex items-center gap-3 px-4 py-2.5 cursor-pointer transition-colors duration-150 ${
+                            mobileActiveIndex === i ? "bg-[#f0fff0]" : "hover:bg-gray-50"
+                          }`}
+                        >
+                          <div className="w-10 h-10 rounded-lg overflow-hidden shrink-0 bg-gray-100">
+                            {product.image ? (
+                              <img src={product.image.url} alt={product.name} className="w-full h-full object-cover" />
+                            ) : (
+                              <div className="w-full h-full flex items-center justify-center text-gray-300 text-xs">?</div>
+                            )}
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="text-sm font-medium text-gray-800 truncate">{product.name}</p>
+                            {product.category?.name && (
+                              <p className="text-xs text-gray-400 truncate">{product.category.name}</p>
+                            )}
+                          </div>
+                          {product.price != null && (
+                            <span className="text-sm font-semibold text-[#129900] shrink-0">Rs. {product.price}</span>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              )}
+            </div>
+
+            {/* Burger */}
+            <div ref={burgerRef} onClick={handleOpen} className="flex items-center justify-center cursor-pointer">
+              <i className="ri-menu-line text-3xl" />
+            </div>
           </div>
+
         </div>
 
         {/* ── Mobile Nav ── */}
