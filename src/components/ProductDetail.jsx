@@ -182,6 +182,22 @@ const ProductDetail = () => {
 
         {/* Right - Details */}
         <div className="md:w-1/2 md:pt-16 flex flex-col gap-4 md:pl-10">
+        <div className="flex md:hidden gap-2 mt-4 overflow-x-auto">
+            {allImages.map((img, i) => (
+              <div
+                key={i}
+                className={`w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden border-2 ${img.url === mainImage?.url ? "border-[#52b345]" : "border-gray-300"
+                  } cursor-pointer`}
+                onClick={() => handleImageClick(img)}
+              >
+                <img
+                  src={img.url}
+                  alt={`thumb-${i}`}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+            ))}
+          </div>
           <div>
             <h1 className="text-2xl font-semibold">{product.name}</h1>
             <p className="text-sm text-gray-600 font-light capitalize">
@@ -200,7 +216,7 @@ const ProductDetail = () => {
               {product.inStock ? "Available" : "Sold Out"}
             </p>
           </div>
-          <div className="flex gap-2 mt-4 overflow-x-auto">
+          <div className="hidden md:flex gap-2 mt-4 overflow-x-auto">
             {allImages.map((img, i) => (
               <div
                 key={i}
