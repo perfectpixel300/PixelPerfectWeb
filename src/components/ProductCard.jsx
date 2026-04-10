@@ -18,7 +18,7 @@ const ProductCard = ({ product }) => {
 
 
       {/* Text Section */}
-      <div className="flex flex-col flex-grow justify-between px-4 pb-5">
+      <div className="flex flex-col flex-grow justify-between px-4 pb-4">
         <div className="flex flex-col">
           <p className="text-[10px] sm:text-xs 2xl:text-base text-[#52b345] uppercase tracking-wide md:mb-1">
             {product.category.name}
@@ -29,7 +29,7 @@ const ProductCard = ({ product }) => {
         </div>
 
         {/* Price & Button */}
-        <div className="flex items-center justify-between md:mt-3 ">
+        <div className="flex items-center justify-between md:mt-1 ">
           <div className="flex flex-col">
             <p className={`font-light text-xs md:text-base ${product.inStock ? "text-green-600" : "text-red-500"}`}>
               {product.inStock ? "Available" : "Sold Out"}
