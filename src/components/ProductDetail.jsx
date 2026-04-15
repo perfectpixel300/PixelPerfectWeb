@@ -124,7 +124,7 @@ const ProductDetail = () => {
               </span>
               .
             </p>
-            <div className="h-[45%] md:h-[150px] w-auto">
+            <div className="h-[130px] md:h-[150px] w-auto">
               <img
                 className="h-full w-full object-cover"
                 src={order}
@@ -138,14 +138,14 @@ const ProductDetail = () => {
           <div className="w-full flex items-center justify-center">
             <Link
               to="/contact"
-              className="bg-[#52b345] text-[#ffffff] text-xl w-[70%] md:w-[40%] h-full flex items-center justify-center rounded-full cursor-pointer font-semibold"
+              className="bg-[#52b345] text-[#ffffff] py-4 text-xl w-[70%] md:w-[40%] h-full flex items-center justify-center rounded-full cursor-pointer font-semibold"
             >
               Contact
             </Link>
           </div>
-          <div className="flex flex-col gap-1 items-center justify-center">
+          <div className="flex flex-col gap-1 items-center justify-center pt-2 pb-3">
             <h1>For faster order response</h1>
-            <div className="flex gap-2 items-center justify-center text-2xl">
+            <div className="flex gap-2 items-center justify-center text-3xl">
               <Link to="https://wa.me/9845991878?text=Hello!%20I%20want%20to%20know%20more%20about%20your%20products/services." target='_blank'><i class="ri-whatsapp-line"></i></Link>
               <Link to="https://m.me/pixelperfectstationery?text=Hello!%20I%20want%20to%20know%20more%20about%20your%20products/services." target='_blank'><i class="ri-messenger-line"></i></Link>
               <Link to="https://www.instagram.com/perfect_pixel300/" target="_blank"><i class="ri-instagram-line"></i></Link>
@@ -153,7 +153,7 @@ const ProductDetail = () => {
           </div>
           <div
             onClick={popUpClose}
-            className="w-full flex items-center justify-center"
+            className="w-full flex items-center justify-center py-2"
           >
             <h1 className="text-lg cursor-pointer w-full h-full flex items-center justify-center">
               Cancel
