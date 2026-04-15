@@ -128,7 +128,7 @@ const Productpage = () => {
             </button>
           </div>
 
-          <div ref={scrollRef} className='flex px-4 overflow-x-auto scroll-smooth w-full py-2 gap-2 no-scroller text-[10px] md:text-[15px]'>
+          <div ref={scrollRef} className='flex capitalize px-4 overflow-x-auto scroll-smooth w-full py-2 gap-2 no-scroller text-[10px] md:text-[15px]'>
 
             {/* ALL PRODUCTS */}
             <button

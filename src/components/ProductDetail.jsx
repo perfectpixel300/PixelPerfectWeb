@@ -142,6 +142,14 @@ const ProductDetail = () => {
               Contact
             </Link>
           </div>
+          <div className="flex flex-col gap-1 items-center justify-center">
+            <h1>For faster order response</h1>
+            <div className="flex gap-2 items-center justify-center text-xl">
+              <Link to="https://wa.me/9845991878?text=Hello!%20I%20want%20to%20know%20more%20about%20your%20products/services." target='_blank'><i class="ri-whatsapp-line"></i></Link>
+              <Link to="https://m.me/pixelperfectstationery?text=Hello!%20I%20want%20to%20know%20more%20about%20your%20products/services." target='_blank'><i class="ri-instagram-line"></i></Link>
+              <Link to="https://www.instagram.com/perfect_pixel300/" target="_blank"><i class="ri-messenger-line"></i></Link>
+            </div>
+          </div>
           <div
             onClick={popUpClose}
             className="h-[14%] w-full flex items-center justify-center"
@@ -182,7 +190,7 @@ const ProductDetail = () => {
 
         {/* Right - Details */}
         <div className="md:w-1/2 md:pt-16 flex flex-col gap-4 md:pl-10">
-        <div className="flex md:hidden gap-2 mt-4 overflow-x-auto">
+          <div className="flex md:hidden gap-2 mt-4 overflow-x-auto">
             {allImages.map((img, i) => (
               <div
                 key={i}
