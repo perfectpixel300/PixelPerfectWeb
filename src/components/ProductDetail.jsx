@@ -111,7 +111,7 @@ const ProductDetail = () => {
           ref={popUpRef}
           className="absolute w-[95%] md:w-[600px] bg-[#ffffff] rounded-2xl bottom-5 left-[50%] -translate-x-[50%]"
         >
-          <div className=" w-full flex flex-col px-4 md:px-10 items-center justify-start pt-4">
+          <div className=" w-full flex flex-col px-4 md:px-10 items-center justify-start pt-4 pb-3">
             <h1 className="font-extrabold text-2xl md:text-3xl uppercase text-[#52b345] pb-4">
               Place Order
             </h1>
@@ -138,12 +138,12 @@ const ProductDetail = () => {
           <div className="w-full flex items-center justify-center">
             <Link
               to="/contact"
-              className="bg-[#52b345] text-[#ffffff] py-4 text-xl w-[70%] md:w-[40%] h-full flex items-center justify-center rounded-full cursor-pointer font-semibold"
+              className="bg-[#52b345] text-[#ffffff] py-2 text-xl w-[70%] md:w-[40%] h-full flex items-center justify-center rounded-full cursor-pointer font-semibold"
             >
               Contact
             </Link>
           </div>
-          <div className="flex flex-col gap-1 items-center justify-center pt-2 pb-3">
+          <div className="flex flex-col gap-1 items-center justify-center py-2">
             <h1>For faster order response</h1>
             <div className="flex gap-2 items-center justify-center text-3xl">
               <Link to="https://wa.me/9845991878?text=Hello!%20I%20want%20to%20know%20more%20about%20your%20products/services." target='_blank'><i class="ri-whatsapp-line"></i></Link>
