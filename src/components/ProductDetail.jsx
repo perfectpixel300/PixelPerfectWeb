@@ -104,13 +104,14 @@ const ProductDetail = () => {
       {/* Pop-up */}
       <div
         ref={bgRef}
-        className="h-screen w-screen bg-[#00000050] fixed z-[99999] text-center opacity-0 pointer-events-none"
+        onClick={popUpClose}
+        className="h-screen w-screen bg-[#00000050] inset-0 fixed z-[99999] text-center opacity-0 pointer-events-none"
       >
         <div
           ref={popUpRef}
-          className="absolute h-[70%] w-[95%] md:h-[500px] md:w-[600px] bg-[#ffffff] rounded-2xl bottom-5 left-[50%] -translate-x-[50%]"
+          className="absolute w-[95%] md:w-[600px] bg-[#ffffff] rounded-2xl bottom-5 left-[50%] -translate-x-[50%]"
         >
-          <div className="h-[72%] w-full flex flex-col px-4 md:px-10 items-center justify-start pt-4">
+          <div className=" w-full flex flex-col px-4 md:px-10 items-center justify-start pt-4">
             <h1 className="font-extrabold text-2xl md:text-3xl uppercase text-[#52b345] pb-4">
               Place Order
             </h1>
@@ -134,7 +135,7 @@ const ProductDetail = () => {
               Your order is one click away!
             </p>
           </div>
-          <div className="h-[14%] w-full flex items-center justify-center">
+          <div className="w-full flex items-center justify-center">
             <Link
               to="/contact"
               className="bg-[#52b345] text-[#ffffff] text-xl w-[70%] md:w-[40%] h-full flex items-center justify-center rounded-full cursor-pointer font-semibold"
@@ -144,15 +145,15 @@ const ProductDetail = () => {
           </div>
           <div className="flex flex-col gap-1 items-center justify-center">
             <h1>For faster order response</h1>
-            <div className="flex gap-2 items-center justify-center text-xl">
+            <div className="flex gap-2 items-center justify-center text-2xl">
               <Link to="https://wa.me/9845991878?text=Hello!%20I%20want%20to%20know%20more%20about%20your%20products/services." target='_blank'><i class="ri-whatsapp-line"></i></Link>
-              <Link to="https://m.me/pixelperfectstationery?text=Hello!%20I%20want%20to%20know%20more%20about%20your%20products/services." target='_blank'><i class="ri-instagram-line"></i></Link>
-              <Link to="https://www.instagram.com/perfect_pixel300/" target="_blank"><i class="ri-messenger-line"></i></Link>
+              <Link to="https://m.me/pixelperfectstationery?text=Hello!%20I%20want%20to%20know%20more%20about%20your%20products/services." target='_blank'><i class="ri-messenger-line"></i></Link>
+              <Link to="https://www.instagram.com/perfect_pixel300/" target="_blank"><i class="ri-instagram-line"></i></Link>
             </div>
           </div>
           <div
             onClick={popUpClose}
-            className="h-[14%] w-full flex items-center justify-center"
+            className="w-full flex items-center justify-center"
           >
             <h1 className="text-lg cursor-pointer w-full h-full flex items-center justify-center">
               Cancel
