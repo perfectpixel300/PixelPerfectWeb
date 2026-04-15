@@ -108,7 +108,7 @@ const ProductDetail = () => {
       >
         <div
           ref={popUpRef}
-          className="absolute h-[60%] w-[95%] md:h-[450px] md:w-[600px] bg-[#ffffff] rounded-2xl bottom-5 left-[50%] -translate-x-[50%]"
+          className="absolute h-[70%] w-[95%] md:h-[500px] md:w-[600px] bg-[#ffffff] rounded-2xl bottom-5 left-[50%] -translate-x-[50%]"
         >
           <div className="h-[72%] w-full flex flex-col px-4 md:px-10 items-center justify-start pt-4">
             <h1 className="font-extrabold text-2xl md:text-3xl uppercase text-[#52b345] pb-4">
