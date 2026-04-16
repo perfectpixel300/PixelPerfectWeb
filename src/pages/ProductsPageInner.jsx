@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import CacheAxios from '../CacheAxios';
 import ProductCard from '../components/ProductCard';
 
 const ProductsPageInner = ({ category }) => {
     const limit = 28;
+    const topRef = useRef(null);
 
-    // Pagination state per category
     const [categoryPages, setCategoryPages] = useState({});
     const [products, setProducts] = useState([]);
     const [totalPages, setTotalPages] = useState(1);
@@ -29,7 +29,6 @@ const ProductsPageInner = ({ category }) => {
         }
     };
 
-    // Reset pagination when category changes
     useEffect(() => {
         setCategoryPages((prev) => ({
             ...prev,
@@ -37,7 +36,6 @@ const ProductsPageInner = ({ category }) => {
         }));
     }, [category]);
 
-    // Fetch products whenever page or category changes
     useEffect(() => {
         fetchProducts();
     }, [category, page]);
@@ -47,13 +45,12 @@ const ProductsPageInner = ({ category }) => {
             ...prev,
             [category]: newPage
         }));
-        document.getElementById("target-ip").click();
+        topRef.current?.scrollIntoView({ behavior: 'smooth' });
     };
 
     return (
         <div className='flex flex-col items-center w-full'>
-            <a id='target-ip' href="#target-id"></a>
-            {/* Products */}
+            <div ref={topRef} />
             {
                 products.length ? (
                     <div className='grid lg:grid-cols-4 w-full px-5 md:px-10 md:grid-cols-3 sm:grid-cols-2 grid-cols-2 gap-x-4 gap-y-6 md:gap-x-6 md:gap-y-6'>
@@ -66,8 +63,7 @@ const ProductsPageInner = ({ category }) => {
                 )
             }
 
-            {/* Pagination */}
-            <div className='flex w-full justify-center gap-4 items-center mt-5 '>
+            <div className='flex w-full justify-center gap-4 items-center mt-5'>
                 <button
                     disabled={page <= 1}
                     onClick={() => handlePageChange(page - 1)}
