@@ -156,7 +156,7 @@ const Productpage = () => {
         </div>
 
         {/* Products Grid */}
-        <div className='flex flex-wrap items-center  justify-center gap-4 md:gap-6 mt-6'>
+        <div className='flex flex-wrap items-center  justify-center gap-2 md:gap-6 mt-6'>
           <ProductsPageInner category={activeCategory} />
         </div>
       </div>
