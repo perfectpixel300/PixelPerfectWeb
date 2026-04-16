@@ -45,7 +45,7 @@ const ProductsPageInner = ({ category }) => {
             ...prev,
             [category]: newPage
         }));
-        topRef.current?.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById("#target-id").scrollIntoView({ behavior: 'smooth' });
     };
 
     return (
