@@ -43,18 +43,16 @@ const ProductsPageInner = ({ category }) => {
     }, [category, page]);
 
     const handlePageChange = (newPage) => {
-        document.getElementById("target-id").scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
         setCategoryPages((prev) => ({
             ...prev,
             [category]: newPage
         }));
+        document.getElementById("target-ip").click();
     };
 
     return (
         <div className='flex flex-col items-center w-full'>
+            <a id='target-ip' href="#target-id"></a>
             {/* Products */}
             {
                 products.length ? (
