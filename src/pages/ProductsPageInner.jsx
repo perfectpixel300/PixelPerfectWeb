@@ -58,7 +58,7 @@ const ProductsPageInner = ({ category }) => {
             {/* Products */}
             {
                 products.length ? (
-                    <div className='grid lg:grid-cols-4 w-full px-10 md:grid-cols-3 sm:grid-cols-2 grid-cols-2 gap-6'>
+                    <div className='grid lg:grid-cols-4 w-full px-5 md:px-10 md:grid-cols-3 sm:grid-cols-2 grid-cols-2 gap-x-4 gap-y-6 md:gap-x-6 md:gap-y-6'>
                         {products.map((pp) => (
                             <ProductCard key={pp._id} product={pp} />
                         ))}
