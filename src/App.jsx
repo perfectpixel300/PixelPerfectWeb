@@ -16,6 +16,7 @@ import HoverButton from "./components/HoverButton";
 import Studio from "./pages/Studio";
 import PrintingPress from "./pages/PrintingPress";
 import NormalLayout from "./pages/NormalLayout";
+import AgencyPortfolio from "./pages/Portfolio";
 
 function App() {
   return (
@@ -29,6 +30,9 @@ function App() {
         <Route path="/contact" element={<NormalLayout><Contact /></NormalLayout>} />
         <Route path="/photo-studio" element={<NormalLayout><Studio /></NormalLayout>} />
         <Route path="/print-press" element={<NormalLayout><PrintingPress /></NormalLayout>} />
+        <Route path="/portfolio" element={
+          <AgencyPortfolio />
+        } />
         <Route path="/admin/*" element={<AdminLogin />} />
       </Routes>
     </BrowserRouter>

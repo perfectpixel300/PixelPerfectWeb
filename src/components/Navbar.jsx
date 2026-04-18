@@ -244,7 +244,7 @@ const Navbar = () => {
   return (
     <>
       <div>
-        <div className="largeScreen-navbar w-[100vw] flex items-center py-4 md:py-6 lg:py-[10px] px-6 md:px-14 fixed z-50 bg-[#ffffff] gap-2 justify-between">
+        <div className="largeScreen-navbar w-full flex items-center py-4 md:py-6 lg:py-[10px] px-6 md:px-14 fixed z-50 bg-[#ffffff] gap-2 justify-between">
 
           {/* Logo */}
           <div className="flex items-start">
