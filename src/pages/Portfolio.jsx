@@ -22,33 +22,43 @@ const PROJECTS = [
 
 const PLANS = [
     {
-        badge: "Starter", name: "Launchpad", tagline: "For new businesses ready to go live.",
-        price: "NPR 17,500", period: "one-time project", note: "+ optional maintenance retainer", featured: false,
+        badge: "Starter", name: "Static", tagline: "Best choice for small shops, portfolios, local businesses.",
+        price: "NPR 15,000", period: "one-time project", note: "Content must be provided", featured: false,
         features: [
-            { text: "Up to 5-page website", included: true }, { text: "Mobile-responsive design", included: true },
+            { text: "Up to 3-page website", included: true }, { text: "Mobile-responsive design", included: true },
             { text: "Basic SEO setup", included: true },
-            { text: "2 revision rounds", included: true }, { text: "Custom animations", included: false },
-            { text: "E-commerce setup", included: false }, { text: "Priority support", included: false },
+            { text: "SSL setup", included: true }, { text: "Custom animations", included: false },
+            { text: "Social media integration", included: false }, { text: "Priority support", included: false },
         ],
     },
     {
-        badge: "Most Popular", name: "Studio", tagline: "For growing businesses that need a serious digital presence.",
-        price: "NPR 30,000", period: "one-time project", note: "+ optional $480/mo retainer", featured: true,
+        badge: "Most Popular", name: "Business Package", tagline: "For growing businesses that need a serious digital presence.",
+        price: "NPR 30,000", period: "one-time project", note: "Content generation is included", featured: true,
         features: [
             { text: "Up to 15-page website", included: true }, { text: "Custom UI/UX design", included: true },
             { text: "Full SEO optimisation", included: true }, { text: "CMS + blog setup", included: true },
-            { text: "5 revision rounds", included: true }, { text: "Custom animations", included: true },
-            { text: "E-commerce (up to 100 SKUs)", included: true }, { text: "Dedicated account manager", included: false },
+            { text: "SSL setup", included: true }, { text: "Custom animations", included: true },
+            { text: "Social media integration", included: true }, { text: "Dedicated account manager", included: false },
         ],
     },
     {
-        badge: "Enterprise", name: "Bespoke", tagline: "Complex platforms, custom software, and full creative partnerships.",
+        badge: "Enterprise", name: "Premium Package", tagline: "Complex platforms, custom software, and full creative partnerships.",
         price: "Custom", period: "scoped to your project", note: "Multi-month retainers available", featured: false,
         features: [
             { text: "Unlimited pages & scope", included: true }, { text: "Full brand & visual identity", included: true },
             { text: "Advanced SEO & analytics", included: true }, { text: "Custom CMS or headless", included: true },
-            { text: "Unlimited revisions", included: true }, { text: "Bespoke animations & interactions", included: true },
-            { text: "Full e-commerce build", included: true }, { text: "Dedicated account manager", included: true },
+            { text: "Unlimited revisions", included: true }, { text: "Professional animations & interactions", included: true },
+            { text: "Full database integration", included: true }, { text: "Dedicated account manager", included: true },
+        ],
+    },
+    {
+        badge: "Businesses", name: "E-commerce Package", tagline: "Choice for online stores and product-based businesses.",
+        price: "NPR 50,000", period: "one-time project", note: "Content must be provided", featured: false,
+        features: [
+            { text: "Unlimited pages", included: true }, { text: "Product catalog management", included: true },
+            { text: "SEO and security features", included: true }, { text: "Shopping cart functionality", included: true },
+            { text: "Admin panel", included: true }, { text: "User authentication", included: true },
+            { text: "Full database integration", included: true }, { text: "Inventory management", included: true },
         ],
     },
 ];
